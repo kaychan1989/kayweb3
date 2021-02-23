@@ -1,0 +1,296 @@
+---
+title: "Descriptive statistics"
+description: |
+  A short description of the post.
+author:
+  - name: 'fatal: unable to access ''C:/Users/KKari/OneDrive/??????/.config/git/config'':
+      Invalid argument'
+date: 02-22-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r}
+data<-rio::import(here::here("Bigdata.sav"))
+```
+
+
+
+Histogram: Age and BPD
+
+
+
+```{r}
+data$facage<-factor(data$Demo_Age,
+                    levels = c(1,2,3,4,5,6),
+                    labels = c("18-24", "25-35", "35-44", "45-44", "55-60", "60+"))
+```
+
+
+```{r}
+boxage<-data %>% select("facage", "BPD")
+
+```
+
+```{r}
+boxage<-na.omit(box)
+```
+
+```{r}
+
+ggplot(boxage, aes(facage, BPD))+
+  geom_boxplot()
+```
+
+
+
+
+```{r}
+boxchild<-data %>% select(Demo_Children, BPD)
+```
+
+
+```{r}
+boxchild$Demo_Children<-factor(data$Demo_Children,
+                    levels = c(0,1),
+                    labels = c("NO", "Yes"))
+```
+
+
+
+```{r}
+boxchild<-na.omit(boxchild)
+```
+
+
+```{r}
+
+ggplot(boxchild, aes(Demo_Children, BPD))+
+  geom_boxplot()
+
+```
+
+```{r}
+
+ggplot(boxchild, aes(BPD))+
+  geom_histogram(aes(fill = Demo_Children), binwidth =1, bins = 10)
+```
+
+
+```{r}
+
+```
+
+
+
+
+```{r}
+edu<-data %>% select(Demo_Edu, BPD)
+edu<-na.omit(edu)
+```
+
+
+```{r}
+edu$Demo_Edu<-factor(edu$Demo_Edu,
+                    levels = c(1, 2,3,4,5,6),
+                    labels = c("8th grade", "Highschool", "Bachelor's","Master's", "Doctorate", "Vocational"))
+```
+
+
+```{r}
+ggplot(edu, aes(Demo_Edu, BPD))+
+  geom_boxplot()+
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 10))
+```
+
+```{r}
+ggplot(edu, aes(BPD, Demo_Edu))+
+  ggridges::geom_density_ridges(color = "white", 
+                                fill = "#A9E5C5")
+```
+
+```{r}
+data$Race <- factor(data$Race,
+                    levels = c(1,2,3,4,5,6),
+                    labels = c("White", "Hispanic", "Black", "Native American", "Asian", "Other"))
+```
+
+
+
+```{r}
+race<-data %>% select(Race, BPD)
+race <- na.omit(race)
+```
+
+
+
+
+```{r}
+ggplot(race, aes(BPD, Race))+
+  ggridges::geom_density_ridges(color = "white", 
+                                fill = "#A9E5C5")
+```
+```{r}
+library(forcats)
+```
+
+??
+```{r}
+ggplot(race, aes(fct_reorder(Race, BPD), BPD))+
+  geom_col()
+```
+
+```{r}
+ggplot(race, aes(fct_reorder(Race, BPD), BPD))+
+  geom_col()+
+  geom_col(data = filter(data, Race == "White",
+                         fill = "#C55644"))+
+  coord_flip()
+```
+
+
+
+
+```{r}
+ggplot(race, aes(Race, BPD))+
+  geom_boxplot()+
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 10))
+```
+
+
+```{r}
+new<-data %>% select(Race, Demo_Children, BPD)
+means<-new %>% 
+  group_by(Race, Demo_Children) %>% 
+  summarize(mean_BPD = mean(BPD))
+means<-na.omit(means)
+
+```
+
+
+```{r}
+means$Demo_Children<-factor(means$Demo_Children, 
+                             levels = c(0,1),
+                             labels = c("No", "yes"))
+```
+
+
+
+
+```{r}
+ggplot(means, aes(Race, Demo_Children))+
+  geom_tile(aes(fill = mean_BPD))+
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 10))
+```
+
+```{r}
+ggplot(means, aes(Race, Demo_Children))+
+  geom_tile(aes(fill = mean_BPD))+
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 10))+
+  scale_fill_distiller(palette  = "Blues", na.value = "#FAFAFA")
+```
+
+```{r}
+newrow<-data.frame(Race = factor("Black", 
+                                 levels = levels(means$Race)), 
+                   Demo_Children = factor("No",
+                                          levels = c("yes", "No")),
+                   mean_BPD = 0)
+
+newmeans<-bind_rows(means, newrow)
+```
+
+
+```{r}
+ggplot(newmeans, aes(Race, Demo_Children))+
+  geom_tile(aes(fill = mean_BPD))+
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 10))+
+  scale_fill_distiller(palette  = "Blues", na.value = "#FAFAFA")
+```
+
+
+```{r}
+BPD_by_status<-data %>% 
+  group_by(Marriage) %>% 
+  summarize(mean_BPD = mean(BPD),
+            se_BPD = sd(BPD)/sqrt(n()))
+
+
+head(BPD_by_status)
+```
+
+```{r}
+BPD_by_status %>% 
+  mutate(marry = fct_reorder(factor(Marriage), mean_BPD)) %>% 
+  ggplot(aes(mean_BPD, marry)) +
+  geom_errorbarh(aes(xmin = mean_BPD - 1.96*se_BPD, 
+                     xmax = mean_BPD + 1.96*se_BPD),
+                color = "gray40") +
+   geom_point()
+```
+
+
+```{r}
+BPD_dodge<-data %>% 
+  group_by(Marriage, Demo_Edu) %>% 
+  summarize(mean_BPD = mean(BPD),
+            se_BPD = sd(BPD)/sqrt(n()))
+
+BPD_dodge <- na.omit(BPD_dodge)
+
+```
+
+```{r}
+BPD_dodge$Demo_Edu <-factor(BPD_dodge$Demo_Edu, 
+                            levels = c(2,3,4,5), 
+                            labels = c("Highschool", "Bachelor's", "Master's", "Doctorate"
+                            ))
+```
+
+
+
+```{r}
+BPD_dodge$Marriage <-factor(BPD_dodge$Marriage, 
+                            levels = c(1, 2,3,4,5), 
+                            labels = c("Single", "Married", "Widowed", "Divorced", "Separated"
+                            ))
+```
+
+
+
+```{r}
+ggplot(BPD_dodge, aes(Marriage, mean_BPD))+
+  geom_col(aes(fill = Demo_Edu), position = "dodge")
+```
+
+
+```{r}
+ggplot(BPD_dodge, aes(Marriage, mean_BPD))+
+  geom_col(aes(fill = Demo_Edu), position = "dodge")+
+  geom_errorbar(aes(ymin = mean_BPD - 1.96*se_BPD,
+                    ymax = mean_BPD + 1.96*se_BPD), 
+                color = "gray40")
+```
+
+
+
+```{r}
+pd<-position_dodge(.9)
+ggplot(BPD_dodge, aes(Marriage, mean_BPD))+
+  geom_col(aes(fill = Demo_Edu), position = pd)+
+  geom_errorbar(aes(ymin = mean_BPD - 1.96*se_BPD,
+                    ymax = mean_BPD + 1.96*se_BPD,
+                    group = Demo_Edu ), 
+                color = "gray40",
+                position = pd,
+                width = 0.5,
+                size = 0.7)
+```
+
+
+
+```{r}
+ggplot(gri)
+```
+

@@ -1,0 +1,555 @@
+---
+title: "findings"
+description: |
+  A short description of the post.
+author:
+  - name: 'fatal: unable to access ''C:/Users/KKari/OneDrive/??????/.config/git/config'':
+      Invalid argument'
+date: 02-19-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+```{r}
+create_post("Conclusion")
+```
+
+Import data 
+```{r}
+data<-rio::import(here::here("Bigdata.sav"))
+```
+
+```{r}
+library(dplyr)
+```
+
+
+Three-way Interaction of Condition, NFC, and Psychosocial Traits: 
+
+
+```{r}
+data$Condition <- as.factor(data$Condition)
+```
+
+
+MOd:ACE
+```{r}
+model1<-lm(Trauma_Knowledge~Condition+NFC+ACE+Condition*ACE+ACE*NFC+Condition*NFC+Condition*NFC*ACE, data)
+
+```
+
+
+```{r}
+model2<-lm(DVS_state~Condition+NFC+ACE+Condition*ACE+ACE*NFC+Condition*NFC+Condition*NFC*ACE, data)
+
+```
+
+
+```{r}
+model3<-lm(Empowerment_InternalTools~Condition+NFC+ACE+Condition*ACE+ACE*NFC+Condition*NFC+Condition*NFC*ACE, data)
+
+```
+
+
+
+```{r}
+model4<-lm(Empowerment_Tradeoffs~Condition+NFC+ACE+Condition*ACE+ACE*NFC+Condition*NFC+Condition*NFC*ACE, data)
+
+
+```
+
+
+```{r}
+model5<-lm(Empowerment_ExpectationSupport~Condition+NFC+ACE+Condition*ACE+ACE*NFC+Condition*NFC+Condition*NFC*ACE, data)
+
+```
+
+
+
+```{r}
+model6<-lm(SelfCompassion~Condition+NFC+ACE+Condition*ACE+ACE*NFC+Condition*NFC+Condition*NFC*ACE, data)
+
+
+```
+
+
+
+```{r}
+model7<-lm(In_GetBack~Condition+NFC+ACE+Condition*ACE+ACE*NFC+Condition*NFC+Condition*NFC*ACE, data)
+
+```
+
+
+```{r}
+model8<-lm(In_End~Condition+NFC+ACE+Condition*ACE+ACE*NFC+Condition*NFC+Condition*NFC*ACE, data)
+
+```
+
+Create Table2
+
+```{r}
+library(stargazer)
+```
+
+
+```{r}
+stargazer(model1, model2, model3, model4, model5, model6, model7, model8,
+          
+          title =  "Table 2. F and t-statistics of rational thinking and adverse childhood experience as the moderators.",
+          df =F,
+          dep.var.labels =c("Trauma knowledge", "Self-efficacy", "Internal tools", "Tradeoffs", "Social support", "Self-compassion", "Getting back intention", "Leaving intention"),
+          covariate.labels = c("Constant",
+                               "Condition", 
+                               "NFC",
+                               "ACE",
+                          "Condition*ACE", 
+                               "NFC*ACE",
+                          "Condition*NFC",
+                           "Condition*NFC*ACE"),
+        
+          
+          type = "html", 
+          align = TRUE, 
+  
+         
+    
+          intercept.bottom = F,
+          intercept.top = T,
+          digits = 2,
+          model.names = T,
+          single.row = T, out="Table2.html"
+          )
+```
+
+No sig outcomes. No visualization is done. 
+
+MOd:Fear
+```{r}
+model1<-lm(Trauma_Knowledge~Condition+NFC+Fear+Condition*Fear+Fear*NFC+Condition*NFC+Condition*NFC*Fear, data)
+
+```
+
+
+```{r}
+model2<-lm(DVS_state~Condition+NFC+Fear+Condition*Fear+Fear*NFC+Condition*NFC+Condition*NFC*Fear, data)
+
+```
+
+
+```{r}
+model3<-lm(Empowerment_InternalTools~Condition+NFC+Fear+Condition*Fear+Fear*NFC+Condition*NFC+Condition*NFC*Fear, data)
+
+```
+
+
+
+```{r}
+model4<-lm(Empowerment_Tradeoffs~Condition+NFC+Fear+Condition*Fear+Fear*NFC+Condition*NFC+Condition*NFC*Fear, data)
+
+
+```
+
+
+```{r}
+model5<-lm(Empowerment_ExpectationSupport~Condition+NFC+Fear+Condition*Fear+Fear*NFC+Condition*NFC+Condition*NFC*Fear, data)
+
+```
+
+
+
+```{r}
+model6<-lm(SelfCompassion~Condition+NFC+Fear+Condition*Fear+Fear*NFC+Condition*NFC+Condition*NFC*Fear, data)
+
+
+```
+
+
+
+```{r}
+model7<-lm(In_GetBack~Condition+NFC+Fear+Condition*Fear+Fear*NFC+Condition*NFC+Condition*NFC*Fear, data)
+```
+
+
+```{r}
+model8<-lm(In_End~Condition+NFC+Fear+Condition*Fear+Fear*NFC+Condition*NFC+Condition*NFC*Fear, data)
+```
+
+Create table 
+
+```{r}
+stargazer(model1, model2, model3, model4, model5, model6, model7, model8,
+          
+          title =  "Table 3. F and t-statistics of rational thinking and fear of the current partner as the moderators.",
+          df =F,
+          dep.var.labels =c("Trauma knowledge", "Self-efficacy", "Internal tools", "Tradeoffs", "Social support", "Self-compassion", "Getting back intention", "Leaving intention"),
+          covariate.labels = c("Constant",
+                               "Condition", 
+                               "NFC",
+                               "Fear",
+                          "Condition*Fear", 
+                               "NFC*Fear",
+                          "Condition*NFC",
+                           "Condition*NFC*Fear"),
+        
+          
+          type = "html", 
+          align = TRUE, 
+  
+         
+    
+          intercept.bottom = F,
+          intercept.top = T,
+          digits = 2,
+          model.names = T,
+          single.row = T, out="Table3.html"
+          )
+```
+
+The interaction effect is sig. on internal tools and will be visualized. 
+
+Plot1: ConditionxNFCXFear-> Self-efficacy
+
+```{r}
+newdata<-select(data, c("Fear", "NFC", "Condition", "DVS_state"))
+
+```
+
+```{r}
+newdata<-na.omit(newdata)
+```
+
+
+```{r}
+newdata$Fear <- cut(newdata$Fear, breaks=c(0, 1.17, 6), include.lowest= TRUE)
+```
+
+
+```{r}
+levels(newdata$Fear)
+```
+
+
+
+```{r}
+newdata$Condition <- factor(newdata$Condition,
+levels = c(0,1),
+labels = c("Control" , "Treatment"))
+```
+
+
+```{r}
+
+newdata$Fear <- factor(newdata$Fear,
+levels = c("[0,1.17]", "(1.17,6]"),
+labels = c("Less than 1.17", "More than 1.17"))
+
+
+plot1<-ggplot(newdata, aes(x  = NFC, y = DVS_state))+
+  geom_smooth(aes(linetype = Condition), method = "lm", color = "black")+
+  facet_wrap(~Fear, ncol = 2)+
+  theme_minimal()+
+  labs(x =  "Rational thinking", y = "Self-efficacy", subtitle = "Fear of the current partner")
+```
+
+
+```{r}
+plot1
+```
+
+
+Mod: BPD 
+
+```{r}
+model1<-lm(Trauma_Knowledge~Condition+NFC+BPD+Condition*BPD+BPD*NFC+Condition*NFC+Condition*NFC*BPD, data)
+
+```
+
+
+```{r}
+model2<-lm(DVS_state~Condition+NFC+BPD+Condition*BPD+BPD*NFC+Condition*NFC+Condition*NFC*BPD, data)
+
+
+```
+
+
+```{r}
+model3<-lm(Empowerment_InternalTools~Condition+NFC+BPD+Condition*BPD+BPD*NFC+Condition*NFC+Condition*NFC*BPD, data)
+
+
+```
+
+
+
+```{r}
+model4<-lm(Empowerment_Tradeoffs~Condition+NFC+BPD+Condition*BPD+BPD*NFC+Condition*NFC+Condition*NFC*BPD, data)
+
+
+
+```
+
+
+```{r}
+model5<-lm(Empowerment_ExpectationSupport~Condition+NFC+BPD+Condition*BPD+BPD*NFC+Condition*NFC+Condition*NFC*BPD, data)
+
+
+```
+
+
+
+```{r}
+model6<-lm(SelfCompassion~Condition+NFC+BPD+Condition*BPD+BPD*NFC+Condition*NFC+Condition*NFC*BPD, data)
+
+
+
+```
+
+
+
+```{r}
+model7<-lm(In_GetBack~Condition+NFC+BPD+Condition*BPD+BPD*NFC+Condition*NFC+Condition*NFC*BPD, data)
+
+```
+
+
+```{r}
+model8<-lm(In_End~Condition+NFC+BPD+Condition*BPD+BPD*NFC+Condition*NFC+Condition*NFC*BPD, data)
+
+```
+
+
+Crete table 4
+
+
+```{r}
+stargazer(model1, model2, model3, model4, model5, model6, model7, model8,
+          
+          title =  "Table 4. F and t-statistics of rational thinking and borderline personality traits as the moderators.",
+          df =F,
+          dep.var.labels =c("Trauma knowledge", "Self-efficacy", "Internal tools", "Tradeoffs", "Social support", "Self-compassion", "Getting back intention", "Leaving intention"),
+          covariate.labels = c("Constant",
+                               "Condition", 
+                               "NFC",
+                               "BPD",
+                          "Condition*BPD", 
+                               "NFC*BPD",
+                          "Condition*NFC",
+                           "Condition*NFC*BPD"),
+        
+          
+          type = "html", 
+          align = TRUE, 
+  
+         
+    
+          intercept.bottom = F,
+          intercept.top = T,
+          digits = 2,
+          model.names = T,
+          single.row = T, out="Table4.html"
+          )
+```
+
+
+No significant interaction and thus no visualization is needed. 
+
+Mod: mom avoidance 
+
+```{r}
+model1<-lm(Trauma_Knowledge~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
+
+```
+
+
+```{r}
+model2<-lm(DVS_state~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
+```
+
+
+```{r}
+model3<-lm(Empowerment_InternalTools~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
+```
+
+
+
+```{r}
+model4<-lm(Empowerment_Tradeoffs~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
+
+
+```
+
+
+```{r}
+model5<-lm(Empowerment_ExpectationSupport~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
+
+```
+
+
+
+```{r}
+model6<-lm(SelfCompassion~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
+
+
+```
+
+
+
+```{r}
+model7<-lm(In_GetBack~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
+```
+
+
+```{r}
+model8<-lm(In_End~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
+
+
+```
+
+
+
+Create Table 
+
+```{r}
+stargazer(model1, model2, model3, model4, model5, model6, model7, model8,
+          
+          title =  "Table 5. F and t-statistics of rational thinking and avoidance attachment to a mother figure as the moderators.",
+          df =F,
+          dep.var.labels =c("Trauma knowledge", "Self-efficacy", "Internal tools", "Tradeoffs", "Social support", "Self-compassion", "Getting back intention", "Leaving intention"),
+          covariate.labels = c("Constant",
+                               "Condition", 
+                               "NFC",
+                               "Avoidance",
+                          "Condition*Avoidance", 
+                               "NFC*Avoidance",
+                          "Condition*NFC",
+                           "Condition*NFC*Avoidance"),
+        
+          
+          type = "html", 
+          align = TRUE, 
+  
+         
+    
+          intercept.bottom = F,
+          intercept.top = T,
+          digits = 2,
+          model.names = T,
+          single.row = T, out="Table5.html"
+          )
+```
+
+The effects on leaving intention is significant Plot2: ConditionxNFCxMom avoidance -> Leaving intention  
+
+
+
+```{r}
+newdata<-select(data, c("Mom_avoidance", "NFC", "Condition", "In_End"))
+
+```
+
+
+```{r}
+#Indicate JN from SPSS 
+newdata$Mom_avoidance <- cut(newdata$Mom_avoidance, breaks=c(0, 2.88, 5), include.lowest= TRUE)
+```
+
+```{r}
+levels(newdata$Mom_avoidance)
+```
+
+
+
+```{r}
+newdata$Condition <- factor(newdata$Condition,
+levels = c(0,1),
+labels = c("Control" , "Treatment"))
+```
+
+```{r}
+newdata<-na.omit(newdata)
+```
+
+
+
+```{r}
+
+newdata$Mom_avoidance <- factor(newdata$Mom_avoidance,
+levels = c("[0,2.88]", "(2.88,5]"),
+labels = c("Less than 2.88", "More than 2.88"))
+
+
+plot2<-ggplot(newdata, aes(x  = NFC, y = In_End))+
+  geom_smooth(aes(linetype = Condition), method = "lm", color = "black")+
+  facet_wrap(~Mom_avoidance, ncol = 2)+
+  theme_minimal()+
+  labs(x =  "Rational thinking", y = "Intention to end the relationship", subtitle = "Avoidance of a mother figure")
+
+```
+
+
+```{r}
+plot2
+```
+
+
+Try create another version of the model plot using geom_point
+
+
+```{r}
+ggplot(newdata, aes(x= NFC, y = In_End))+
+  geom_point(aes(color = Condition))+
+  facet_wrap(~Mom_avoidance)+
+  geom_smooth(aes(color = Condition))
+               
+  
+```
+
+
+```{r}
+install.packages("interactions")
+```
+```{r}
+library(interactions)
+```
+
+
+```{r}
+interact_plot(model8, pred = NFC, modx = Condition, mod2 = Mom_avoidance, linearity.check = TRUE, plot.points = 2)
+```
+
+```{r}
+model8.1 <- lm(In_End~Condition*poly(NFC,2)*Mom_avoidance, data)
+summary(model8.1)
+#Not significant .. so use the linear?
+```
+
+
+Uncertainty: visualize the standard errors 
+```{r}
+un_model8<-broom::tidy(model8, conf.int = TRUE)
+un_model8
+```
+
+
+
+```{r}
+ggplot(un_model8, aes(term, estimate))+
+  geom_hline(yintercept = 0,
+             color = "cornflowerblue",
+             linetype = 2)+
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high))+
+  geom_point()+
+  coord_flip()
+```
+
+
+

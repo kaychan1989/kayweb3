@@ -1,0 +1,96 @@
+---
+title: "Research background"
+description: |
+  A short description of the post.
+author:
+  - name: 'fatal: unable to access ''C:/Users/KKari/OneDrive/??????/.config/git/config'':
+      Invalid argument'
+date: 02-19-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+```{r}
+summary(data)
+```
+
+Check outlier
+```{r}
+ mahal <- mahalanobis(data[ , -c(18:30)],
+                      colMeans(data[ ,-c(18:30)], na.rm = TRUE), 
+                      cov(data[ , -c(18:30)], 
+                          use = "pairwise.complete.obs"))
+                                                                        
+
+```
+
+
+```{r}
+cutoff = qchisq(.999, ncol(data[, -c(18:30)]))
+```
+
+
+```{r}
+summary(mahal<cutoff)
+```
+
+
+```{r}
+correlation = cor(data[ ,-c(18:30)], use = "pairwise.complete.obs")
+```
+
+```{r}
+symnum(correlation)
+```
+
+Assumption check 
+
+
+Create a new data frame without variables with missing values as I assumed, chi square distribution function in R does not support NA. Or it may but I just dont know yet 
+
+
+```{r}
+dataII <- data %>% select(ACE:SelfCompassion)
+```
+
+
+```{r}
+
+random = rchisq(nrow(data[ ,-c(18:30)]), 7)
+```
+
+```{r}
+fake = lm(random~.,na.rm = TRUE, data=data[ ,-c(18:30)])
+```
+
+Create standardized residuals 
+
+1. Linearity check
+```{r}
+standardized_residuals= rstudent(fake)
+qqnorm(standardized_residuals)
+abline(0,1)
+
+```
+
+2. Normality check 
+
+```{r}
+hist(standardized_residuals)
+```
+
+3. . Error homogeneity (shold be around and eqaual along the fitted values) and 4. independce of errors (should look random) 
+fitted values refer to predicted scores of the data set 
+```{r}
+fitted = scale(fake$fitted.values)
+plot(fitted, standardized_residuals)
+abline(0,0)
+abline(v = 0)
+```
+
+
+
+

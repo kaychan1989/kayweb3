@@ -1,0 +1,12 @@
+name: "kayweb3"
+title: "Welcome to my research project: Trauma-informed messages for domestic violence interventions."
+description: |
+  I explored message efficacy and the moderating roles of information processing and psychosocial personality traits 
+output_dir: "docs"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+output: distill::distill_article

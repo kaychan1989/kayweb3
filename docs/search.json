@@ -1,0 +1,21 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About this site",
+      "description": "Some additional details about the website",
+      "author": [],
+      "contents": "\r\n\r\nv Created post at _posts/2021-02-23-research-background \r\n\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-02-23T15:48:39-08:00"
+    },
+    {
+      "path": "index.html",
+      "title": "My Website",
+      "description": "Welcome to the website. I hope you enjoy it!\n",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-02-23T15:48:42-08:00"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}
