@@ -3,8 +3,7 @@ title: "findings"
 description: |
   A short description of the post.
 author:
-  - name: 'fatal: unable to access ''C:/Users/KKari/OneDrive/??????/.config/git/config'':
-      Invalid argument'
+  - name: "Kay"
 date: 02-19-2021
 output:
   distill::distill_article:
@@ -14,6 +13,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
 ```
 
 Distill is a publication format for scientific and technical writing, native to the web.
@@ -21,7 +21,7 @@ Distill is a publication format for scientific and technical writing, native to 
 Learn more about using Distill at <https://rstudio.github.io/distill>.
 
 ```{r}
-create_post("Conclusion")
+#create_post("Conclusion")
 ```
 
 Import data 
@@ -102,7 +102,7 @@ library(stargazer)
 ```
 
 
-```{r}
+```{r results = "asis"}
 stargazer(model1, model2, model3, model4, model5, model6, model7, model8,
           
           title =  "Table 2. F and t-statistics of rational thinking and adverse childhood experience as the moderators.",
@@ -515,7 +515,7 @@ ggplot(newdata, aes(x= NFC, y = In_End))+
 
 
 ```{r}
-install.packages("interactions")
+#install.packages("interactions")
 ```
 ```{r}
 library(interactions)

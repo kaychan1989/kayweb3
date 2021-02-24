@@ -1,0 +1,2319 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>findings</title>
+  
+  <meta property="description" itemprop="description" content="A short description of the post."/>
+  
+  
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-02-19"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-02-19"/>
+  <meta name="article:author" content="Kay"/>
+  
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="findings"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="A short description of the post."/>
+  <meta property="og:locale" content="en_US"/>
+  
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="findings"/>
+  <meta property="twitter:description" content="A short description of the post."/>
+  
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["findings"]},{"type":"character","attributes":{},"value":["A short description of the post.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Kay"]}]}]},{"type":"character","attributes":{},"value":["02-19-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["findings_files/anchor-4.2.2/anchor.min.js","findings_files/bowser-1.9.3/bowser.min.js","findings_files/distill-2.2.21/template.v2.js","findings_files/figure-html5/unnamed-chunk-30-1.png","findings_files/figure-html5/unnamed-chunk-55-1.png","findings_files/figure-html5/unnamed-chunk-56-1.png","findings_files/figure-html5/unnamed-chunk-59-1.png","findings_files/figure-html5/unnamed-chunk-62-1.png","findings_files/jquery-1.11.3/jquery.min.js","findings_files/popper-2.6.0/popper.min.js","findings_files/tippy-6.2.7/tippy-bundle.umd.min.js","findings_files/tippy-6.2.7/tippy-light-border.css","findings_files/tippy-6.2.7/tippy.css","findings_files/tippy-6.2.7/tippy.umd.min.js","findings_files/webcomponents-2.0.0/webcomponents.js","Table2.doc","Table2.html","Table3.html","Table4.html","Table5.html"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+  
+  <style type="text/css">
+  
+  body {
+    background-color: white;
+  }
+  
+  .pandoc-table {
+    width: 100%;
+  }
+  
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+  
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+  
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+  
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+  
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+  
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+  
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+  
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+  
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+  
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+  
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+  
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+  
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .shaded-content {
+    background: white;
+  }
+  
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+  
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+  
+  d-appendix {
+    padding-top: 30px;
+  }
+  
+  d-article>p>img {
+    width: 100%;
+  }
+  
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+  
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+  
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+  
+  /* Tweak code blocks */
+  
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+  
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+  
+  d-article div.sourceCode {
+    background-color: white;
+  }
+  
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+  
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  d-article pre a {
+    border-bottom: none;
+  }
+  
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+  
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+  
+  @media(min-width: 768px) {
+  
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+  
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+  
+  d-article pre {
+    font-size: 14px;
+  }
+  
+  }
+  
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  /* CSS for d-contents */
+  
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+  
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+  
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+  
+  .d-contents li {
+    list-style-type: none
+  }
+  
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+  
+  .d-contents ul {
+    padding-left: 1em
+  }
+  
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+  
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+  
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+  
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+  
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+  
+  
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+  
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+  
+  
+  /* Figure */
+  
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+  
+  .figure img {
+    width: 100%;
+  }
+  
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+  
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+  
+  /* Citations */
+  
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+  
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+  
+  /* Citation hover box */
+  
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+  
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+  
+  
+  /* Tweak 1000px media break to show more text */
+  
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+  
+    .grid {
+      grid-column-gap: 16px;
+    }
+  
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+  
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+  
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+  
+  
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+  
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  /* Include appendix styles here so they can be overridden */
+  
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+  
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+  
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+  
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+  
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+  
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+  
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  d-appendix > * {
+    grid-column: text;
+  }
+  
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+  
+  /* Include footnote styles here so they can be overridden */
+  
+  d-footnote-list {
+    contain: layout style;
+  }
+  
+  d-footnote-list > * {
+    grid-column: text;
+  }
+  
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+  
+  
+  
+  /* Anchor.js */
+  
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+  
+  /* Social footer */
+  
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+  
+  .disqus-comments {
+    margin-right: 30px;
+  }
+  
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  
+  #disqus_thread {
+    margin-top: 30px;
+  }
+  
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+  
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+  
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+  
+  
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+  
+  
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+  
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+  
+  /* Styles for posts lists (not auto-injected) */
+  
+  
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+  
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+  
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+  
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+  
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+  
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+  
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+  
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+  
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+  
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+  
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+  
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+  
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+  
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  .posts-list img {
+    opacity: 1;
+  }
+  
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+  
+  .posts-more {
+    clear: both;
+  }
+  
+  
+  .posts-sidebar {
+    font-size: 16px;
+  }
+  
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+  
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+  
+  .categories li>a {
+    border-bottom: none;
+  }
+  
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+  
+  .categories .active {
+    font-weight: 600;
+  }
+  
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+  
+  
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+  
+  
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+  
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+  
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+  
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+  
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+  
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  
+  
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+  
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+  
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+  
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+  
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+  
+  
+  
+  </style>
+  
+  <script type="application/javascript">
+  
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+  
+  // show body when load is complete
+  function on_load_complete() {
+  
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+  
+  
+    // set body to visible
+    document.body.style.visibility = 'visible';
+  
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+  
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+  
+  function init_distill() {
+  
+    init_common();
+  
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+  
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+  
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+  
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+  
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+  
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+  
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+  
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+  
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+  
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+  
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+  
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+  
+      // capture layout
+      var layout = $(this).attr('data-layout');
+  
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+  
+  
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+  
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+  
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+  
+    // load distill framework
+    load_distill_framework();
+  
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+  
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+  
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+  
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+  
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+  
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+  
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+  
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+  
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+  
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+  
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+  
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+  
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+  
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+  
+      // clear polling timer
+      clearInterval(tid);
+  
+      // show body now that everything is ready
+      on_load_complete();
+    }
+  
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+  
+  }
+  
+  function init_downlevel() {
+  
+    init_common();
+  
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+  
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+  
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+  
+    // remove toc
+    $('.d-contents').remove();
+  
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+  
+  
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+  
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+  
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+  
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+  
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+  
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+  
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+  
+    $('body').addClass('downlevel');
+  
+    on_load_complete();
+  }
+  
+  
+  function init_common() {
+  
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+  
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+  
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+  
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+  
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+  
+      }
+    });
+  
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+  
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+  
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+  
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+  
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+  
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+  
+  </script>
+  
+  <!--/radix_placeholder_distill-->
+  <script src="findings_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="findings_files/popper-2.6.0/popper.min.js"></script>
+  <link href="findings_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="findings_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="findings_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="findings_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="findings_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="findings_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="findings_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"findings","description":"A short description of the post.","authors":[{"author":"Kay","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-02-19T00:00:00.000-08:00","citationText":"Kay, 2021"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>findings</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p>A short description of the post.</p>
+</div>
+
+<div class="d-byline">
+  Kay  
+  
+<br/>02-19-2021
+</div>
+
+<div class="d-article">
+<p>Distill is a publication format for scientific and technical writing, native to the web.</p>
+<p>Learn more about using Distill at <a href="https://rstudio.github.io/distill" class="uri">https://rstudio.github.io/distill</a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+Import data
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Three-way Interaction of Condition, NFC, and Psychosocial Traits:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+MOd:ACE
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Create Table2</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<table style="text-align:center">
+<caption>
+<strong>Table 2. F and t-statistics of rational thinking and adverse childhood experience as the moderators.</strong>
+</caption>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="8">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="8" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Trauma knowledge
+</td>
+<td>
+Self-efficacy
+</td>
+<td>
+Internal tools
+</td>
+<td>
+Tradeoffs
+</td>
+<td>
+Social support
+</td>
+<td>
+Self-compassion
+</td>
+<td>
+Getting back intention
+</td>
+<td>
+Leaving intention
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<em>OLS</em>
+</td>
+<td>
+<em>OLS</em>
+</td>
+<td>
+<em>OLS</em>
+</td>
+<td>
+<em>OLS</em>
+</td>
+<td>
+<em>OLS</em>
+</td>
+<td>
+<em>OLS</em>
+</td>
+<td>
+<em>OLS</em>
+</td>
+<td>
+<em>OLS</em>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+<td>
+(5)
+</td>
+<td>
+(6)
+</td>
+<td>
+(7)
+</td>
+<td>
+(8)
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+3.22<sup>***</sup> (0.69)
+</td>
+<td>
+51.31<sup>***</sup> (14.57)
+</td>
+<td>
+3.14<sup>***</sup> (0.51)
+</td>
+<td>
+4.49<sup>***</sup> (0.77)
+</td>
+<td>
+3.11<sup>***</sup> (0.65)
+</td>
+<td>
+2.75<sup>***</sup> (0.46)
+</td>
+<td>
+5.36<sup>*</sup> (2.95)
+</td>
+<td>
+4.18<sup>***</sup> (1.16)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Condition
+</td>
+<td>
+0.95 (0.99)
+</td>
+<td>
+-11.96 (21.01)
+</td>
+<td>
+0.14 (0.73)
+</td>
+<td>
+-0.02 (1.11)
+</td>
+<td>
+1.37 (0.93)
+</td>
+<td>
+-0.31 (0.66)
+</td>
+<td>
+-1.22 (3.52)
+</td>
+<td>
+-0.92 (1.75)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+NFC
+</td>
+<td>
+-0.09 (0.20)
+</td>
+<td>
+1.54 (4.22)
+</td>
+<td>
+0.29<sup>*</sup> (0.15)
+</td>
+<td>
+-0.53<sup>**</sup> (0.22)
+</td>
+<td>
+0.22 (0.19)
+</td>
+<td>
+0.10 (0.13)
+</td>
+<td>
+-0.96 (0.80)
+</td>
+<td>
+-0.62<sup>*</sup> (0.34)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+ACE
+</td>
+<td>
+0.02 (0.12)
+</td>
+<td>
+1.76 (2.60)
+</td>
+<td>
+0.04 (0.09)
+</td>
+<td>
+-0.06 (0.14)
+</td>
+<td>
+0.01 (0.12)
+</td>
+<td>
+-0.02 (0.08)
+</td>
+<td>
+-0.51 (0.55)
+</td>
+<td>
+0.01 (0.21)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Condition*ACE
+</td>
+<td>
+-0.05 (0.20)
+</td>
+<td>
+-0.02 (4.16)
+</td>
+<td>
+-0.06 (0.14)
+</td>
+<td>
+-0.05 (0.22)
+</td>
+<td>
+-0.13 (0.18)
+</td>
+<td>
+0.06 (0.13)
+</td>
+<td>
+-0.04 (0.68)
+</td>
+<td>
+0.13 (0.35)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+NFC*ACE
+</td>
+<td>
+0.02 (0.04)
+</td>
+<td>
+-0.42 (0.77)
+</td>
+<td>
+-0.02 (0.03)
+</td>
+<td>
+0.04 (0.04)
+</td>
+<td>
+-0.01 (0.03)
+</td>
+<td>
+-0.0002 (0.02)
+</td>
+<td>
+0.12 (0.14)
+</td>
+<td>
+0.05 (0.06)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Condition*NFC
+</td>
+<td>
+0.12 (0.30)
+</td>
+<td>
+3.75 (6.28)
+</td>
+<td>
+-0.07 (0.22)
+</td>
+<td>
+-0.02 (0.33)
+</td>
+<td>
+-0.46 (0.28)
+</td>
+<td>
+0.04 (0.20)
+</td>
+<td>
+0.35 (0.98)
+</td>
+<td>
+0.31 (0.53)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Condition<em>NFC</em>ACE
+</td>
+<td>
+-0.02 (0.06)
+</td>
+<td>
+-0.07 (1.25)
+</td>
+<td>
+0.02 (0.04)
+</td>
+<td>
+0.02 (0.07)
+</td>
+<td>
+0.05 (0.06)
+</td>
+<td>
+-0.01 (0.04)
+</td>
+<td>
+0.03 (0.19)
+</td>
+<td>
+-0.03 (0.11)
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+286
+</td>
+<td>
+285
+</td>
+<td>
+285
+</td>
+<td>
+285
+</td>
+<td>
+285
+</td>
+<td>
+285
+</td>
+<td>
+55
+</td>
+<td>
+216
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.19
+</td>
+<td>
+0.01
+</td>
+<td>
+0.07
+</td>
+<td>
+0.12
+</td>
+<td>
+0.02
+</td>
+<td>
+0.03
+</td>
+<td>
+0.10
+</td>
+<td>
+0.14
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.17
+</td>
+<td>
+-0.01
+</td>
+<td>
+0.05
+</td>
+<td>
+0.10
+</td>
+<td>
+-0.001
+</td>
+<td>
+0.002
+</td>
+<td>
+-0.03
+</td>
+<td>
+0.11
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+0.87
+</td>
+<td>
+18.46
+</td>
+<td>
+0.64
+</td>
+<td>
+0.97
+</td>
+<td>
+0.82
+</td>
+<td>
+0.58
+</td>
+<td>
+1.17
+</td>
+<td>
+1.32
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+9.53<sup>***</sup>
+</td>
+<td>
+0.54
+</td>
+<td>
+3.02<sup>***</sup>
+</td>
+<td>
+5.28<sup>***</sup>
+</td>
+<td>
+0.96
+</td>
+<td>
+1.09
+</td>
+<td>
+0.74
+</td>
+<td>
+4.88<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="8" style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
+</div>
+<p>No sig outcomes. No visualization is done.</p>
+MOd:Fear
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Create table</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+&lt;table style=&quot;text-align:center&quot;&gt;&lt;caption&gt;&lt;strong&gt;Table 3. F and t-statistics of rational thinking and fear of the current partner as the moderators.&lt;/strong&gt;&lt;/caption&gt;
+&lt;tr&gt;&lt;td colspan=&quot;9&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td colspan=&quot;8&quot;&gt;&lt;em&gt;Dependent variable:&lt;/em&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td colspan=&quot;8&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;Trauma knowledge&lt;/td&gt;&lt;td&gt;Self-efficacy&lt;/td&gt;&lt;td&gt;Internal tools&lt;/td&gt;&lt;td&gt;Tradeoffs&lt;/td&gt;&lt;td&gt;Social support&lt;/td&gt;&lt;td&gt;Self-compassion&lt;/td&gt;&lt;td&gt;Getting back intention&lt;/td&gt;&lt;td&gt;Leaving intention&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;(1)&lt;/td&gt;&lt;td&gt;(2)&lt;/td&gt;&lt;td&gt;(3)&lt;/td&gt;&lt;td&gt;(4)&lt;/td&gt;&lt;td&gt;(5)&lt;/td&gt;&lt;td&gt;(6)&lt;/td&gt;&lt;td&gt;(7)&lt;/td&gt;&lt;td&gt;(8)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan=&quot;9&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Constant&lt;/td&gt;&lt;td&gt;4.17&lt;sup&gt;***&lt;/sup&gt; (0.71)&lt;/td&gt;&lt;td&gt;62.27&lt;sup&gt;***&lt;/sup&gt; (14.83)&lt;/td&gt;&lt;td&gt;3.41&lt;sup&gt;***&lt;/sup&gt; (0.52)&lt;/td&gt;&lt;td&gt;2.25&lt;sup&gt;***&lt;/sup&gt; (0.77)&lt;/td&gt;&lt;td&gt;2.80&lt;sup&gt;***&lt;/sup&gt; (0.65)&lt;/td&gt;&lt;td&gt;2.70&lt;sup&gt;***&lt;/sup&gt; (0.47)&lt;/td&gt;&lt;td&gt;4.00&lt;sup&gt;*&lt;/sup&gt; (2.25)&lt;/td&gt;&lt;td&gt;2.85&lt;sup&gt;**&lt;/sup&gt; (1.15)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Condition&lt;/td&gt;&lt;td&gt;-0.21 (1.00)&lt;/td&gt;&lt;td&gt;-41.97&lt;sup&gt;**&lt;/sup&gt; (20.75)&lt;/td&gt;&lt;td&gt;-0.04 (0.73)&lt;/td&gt;&lt;td&gt;1.05 (1.07)&lt;/td&gt;&lt;td&gt;2.17&lt;sup&gt;**&lt;/sup&gt; (0.91)&lt;/td&gt;&lt;td&gt;-0.97 (0.65)&lt;/td&gt;&lt;td&gt;-2.38 (3.19)&lt;/td&gt;&lt;td&gt;-0.34 (1.63)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;NFC&lt;/td&gt;&lt;td&gt;-0.30 (0.21)&lt;/td&gt;&lt;td&gt;-1.48 (4.34)&lt;/td&gt;&lt;td&gt;0.13 (0.15)&lt;/td&gt;&lt;td&gt;0.10 (0.22)&lt;/td&gt;&lt;td&gt;0.20 (0.19)&lt;/td&gt;&lt;td&gt;0.10 (0.14)&lt;/td&gt;&lt;td&gt;-0.59 (0.64)&lt;/td&gt;&lt;td&gt;-0.33 (0.34)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Fear&lt;/td&gt;&lt;td&gt;-0.22 (0.20)&lt;/td&gt;&lt;td&gt;-0.59 (4.11)&lt;/td&gt;&lt;td&gt;-0.05 (0.15)&lt;/td&gt;&lt;td&gt;0.64&lt;sup&gt;***&lt;/sup&gt; (0.21)&lt;/td&gt;&lt;td&gt;0.09 (0.18)&lt;/td&gt;&lt;td&gt;-0.02 (0.13)&lt;/td&gt;&lt;td&gt;-0.48 (0.71)&lt;/td&gt;&lt;td&gt;0.42 (0.32)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Condition*Fear&lt;/td&gt;&lt;td&gt;0.28 (0.31)&lt;/td&gt;&lt;td&gt;10.75&lt;sup&gt;*&lt;/sup&gt; (6.40)&lt;/td&gt;&lt;td&gt;-0.01 (0.23)&lt;/td&gt;&lt;td&gt;-0.41 (0.33)&lt;/td&gt;&lt;td&gt;-0.48&lt;sup&gt;*&lt;/sup&gt; (0.28)&lt;/td&gt;&lt;td&gt;0.36&lt;sup&gt;*&lt;/sup&gt; (0.20)&lt;/td&gt;&lt;td&gt;0.59 (1.09)&lt;/td&gt;&lt;td&gt;-0.11 (0.49)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;NFC*Fear&lt;/td&gt;&lt;td&gt;0.09 (0.06)&lt;/td&gt;&lt;td&gt;0.27 (1.21)&lt;/td&gt;&lt;td&gt;0.02 (0.04)&lt;/td&gt;&lt;td&gt;-0.14&lt;sup&gt;**&lt;/sup&gt; (0.06)&lt;/td&gt;&lt;td&gt;-0.001 (0.05)&lt;/td&gt;&lt;td&gt;0.001 (0.04)&lt;/td&gt;&lt;td&gt;0.10 (0.19)&lt;/td&gt;&lt;td&gt;-0.01 (0.09)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Condition*NFC&lt;/td&gt;&lt;td&gt;0.42 (0.29)&lt;/td&gt;&lt;td&gt;12.32&lt;sup&gt;**&lt;/sup&gt; (6.14)&lt;/td&gt;&lt;td&gt;0.05 (0.22)&lt;/td&gt;&lt;td&gt;-0.31 (0.32)&lt;/td&gt;&lt;td&gt;-0.62&lt;sup&gt;**&lt;/sup&gt; (0.27)&lt;/td&gt;&lt;td&gt;0.22 (0.19)&lt;/td&gt;&lt;td&gt;0.68 (0.93)&lt;/td&gt;&lt;td&gt;0.15 (0.48)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Condition*NFC*Fear&lt;/td&gt;&lt;td&gt;-0.13 (0.09)&lt;/td&gt;&lt;td&gt;-3.24&lt;sup&gt;*&lt;/sup&gt; (1.92)&lt;/td&gt;&lt;td&gt;-0.01 (0.07)&lt;/td&gt;&lt;td&gt;0.13 (0.10)&lt;/td&gt;&lt;td&gt;0.13 (0.08)&lt;/td&gt;&lt;td&gt;-0.09 (0.06)&lt;/td&gt;&lt;td&gt;-0.13 (0.31)&lt;/td&gt;&lt;td&gt;0.04 (0.15)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan=&quot;9&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Observations&lt;/td&gt;&lt;td&gt;286&lt;/td&gt;&lt;td&gt;285&lt;/td&gt;&lt;td&gt;285&lt;/td&gt;&lt;td&gt;285&lt;/td&gt;&lt;td&gt;285&lt;/td&gt;&lt;td&gt;285&lt;/td&gt;&lt;td&gt;55&lt;/td&gt;&lt;td&gt;216&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.18&lt;/td&gt;&lt;td&gt;0.03&lt;/td&gt;&lt;td&gt;0.05&lt;/td&gt;&lt;td&gt;0.16&lt;/td&gt;&lt;td&gt;0.05&lt;/td&gt;&lt;td&gt;0.04&lt;/td&gt;&lt;td&gt;0.06&lt;/td&gt;&lt;td&gt;0.26&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Adjusted R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.16&lt;/td&gt;&lt;td&gt;0.001&lt;/td&gt;&lt;td&gt;0.03&lt;/td&gt;&lt;td&gt;0.14&lt;/td&gt;&lt;td&gt;0.03&lt;/td&gt;&lt;td&gt;0.02&lt;/td&gt;&lt;td&gt;-0.08&lt;/td&gt;&lt;td&gt;0.23&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Residual Std. Error&lt;/td&gt;&lt;td&gt;0.88&lt;/td&gt;&lt;td&gt;18.34&lt;/td&gt;&lt;td&gt;0.65&lt;/td&gt;&lt;td&gt;0.95&lt;/td&gt;&lt;td&gt;0.80&lt;/td&gt;&lt;td&gt;0.58&lt;/td&gt;&lt;td&gt;1.19&lt;/td&gt;&lt;td&gt;1.23&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;F Statistic&lt;/td&gt;&lt;td&gt;8.63&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;1.03&lt;/td&gt;&lt;td&gt;2.24&lt;sup&gt;**&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;7.54&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;2.08&lt;sup&gt;**&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;1.77&lt;sup&gt;*&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.43&lt;/td&gt;&lt;td&gt;10.42&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan=&quot;9&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/td&gt;&lt;td colspan=&quot;8&quot; style=&quot;text-align:right&quot;&gt;&lt;sup&gt;*&lt;/sup&gt;p&lt;0.1; &lt;sup&gt;**&lt;/sup&gt;p&lt;0.05; &lt;sup&gt;***&lt;/sup&gt;p&lt;0.01&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</div>
+<p>The interaction effect is sig. on internal tools and will be visualized.</p>
+<p>Plot1: ConditionxNFCXFear-&gt; Self-efficacy</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] &quot;[0,1.17]&quot; &quot;(1.17,6]&quot;</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="findings_files/figure-html5/unnamed-chunk-30-1.png" width="624" /></p>
+</div>
+<p>Mod: BPD</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Crete table 4</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+&lt;table style=&quot;text-align:center&quot;&gt;&lt;caption&gt;&lt;strong&gt;Table 4. F and t-statistics of rational thinking and borderline personality traits as the moderators.&lt;/strong&gt;&lt;/caption&gt;
+&lt;tr&gt;&lt;td colspan=&quot;9&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td colspan=&quot;8&quot;&gt;&lt;em&gt;Dependent variable:&lt;/em&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td colspan=&quot;8&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;Trauma knowledge&lt;/td&gt;&lt;td&gt;Self-efficacy&lt;/td&gt;&lt;td&gt;Internal tools&lt;/td&gt;&lt;td&gt;Tradeoffs&lt;/td&gt;&lt;td&gt;Social support&lt;/td&gt;&lt;td&gt;Self-compassion&lt;/td&gt;&lt;td&gt;Getting back intention&lt;/td&gt;&lt;td&gt;Leaving intention&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;(1)&lt;/td&gt;&lt;td&gt;(2)&lt;/td&gt;&lt;td&gt;(3)&lt;/td&gt;&lt;td&gt;(4)&lt;/td&gt;&lt;td&gt;(5)&lt;/td&gt;&lt;td&gt;(6)&lt;/td&gt;&lt;td&gt;(7)&lt;/td&gt;&lt;td&gt;(8)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan=&quot;9&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Constant&lt;/td&gt;&lt;td&gt;2.61&lt;sup&gt;***&lt;/sup&gt; (0.80)&lt;/td&gt;&lt;td&gt;33.32&lt;sup&gt;*&lt;/sup&gt; (16.93)&lt;/td&gt;&lt;td&gt;2.90&lt;sup&gt;***&lt;/sup&gt; (0.61)&lt;/td&gt;&lt;td&gt;3.94&lt;sup&gt;***&lt;/sup&gt; (0.94)&lt;/td&gt;&lt;td&gt;3.78&lt;sup&gt;***&lt;/sup&gt; (0.76)&lt;/td&gt;&lt;td&gt;2.19&lt;sup&gt;***&lt;/sup&gt; (0.52)&lt;/td&gt;&lt;td&gt;6.03&lt;sup&gt;*&lt;/sup&gt; (3.34)&lt;/td&gt;&lt;td&gt;3.94&lt;sup&gt;***&lt;/sup&gt; (1.43)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Condition&lt;/td&gt;&lt;td&gt;1.53 (1.20)&lt;/td&gt;&lt;td&gt;19.09 (25.38)&lt;/td&gt;&lt;td&gt;0.26 (0.91)&lt;/td&gt;&lt;td&gt;0.68 (1.41)&lt;/td&gt;&lt;td&gt;-0.56 (1.14)&lt;/td&gt;&lt;td&gt;0.80 (0.78)&lt;/td&gt;&lt;td&gt;-6.93 (4.78)&lt;/td&gt;&lt;td&gt;-0.33 (2.13)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;NFC&lt;/td&gt;&lt;td&gt;-0.01 (0.23)&lt;/td&gt;&lt;td&gt;9.10&lt;sup&gt;*&lt;/sup&gt; (4.88)&lt;/td&gt;&lt;td&gt;0.34&lt;sup&gt;*&lt;/sup&gt; (0.18)&lt;/td&gt;&lt;td&gt;-0.34 (0.27)&lt;/td&gt;&lt;td&gt;0.08 (0.22)&lt;/td&gt;&lt;td&gt;0.33&lt;sup&gt;**&lt;/sup&gt; (0.15)&lt;/td&gt;&lt;td&gt;-1.12 (0.94)&lt;/td&gt;&lt;td&gt;-0.51 (0.42)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;BPD&lt;/td&gt;&lt;td&gt;0.11 (0.13)&lt;/td&gt;&lt;td&gt;5.45&lt;sup&gt;*&lt;/sup&gt; (2.84)&lt;/td&gt;&lt;td&gt;0.08 (0.10)&lt;/td&gt;&lt;td&gt;0.06 (0.16)&lt;/td&gt;&lt;td&gt;-0.10 (0.13)&lt;/td&gt;&lt;td&gt;0.11 (0.09)&lt;/td&gt;&lt;td&gt;-0.51 (0.50)&lt;/td&gt;&lt;td&gt;0.07 (0.25)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Condition*BPD&lt;/td&gt;&lt;td&gt;-0.12 (0.19)&lt;/td&gt;&lt;td&gt;-6.27 (4.11)&lt;/td&gt;&lt;td&gt;-0.07 (0.15)&lt;/td&gt;&lt;td&gt;-0.16 (0.23)&lt;/td&gt;&lt;td&gt;0.24 (0.18)&lt;/td&gt;&lt;td&gt;-0.16 (0.13)&lt;/td&gt;&lt;td&gt;0.93 (0.71)&lt;/td&gt;&lt;td&gt;-0.02 (0.36)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;NFC*BPD&lt;/td&gt;&lt;td&gt;0.01 (0.04)&lt;/td&gt;&lt;td&gt;-1.96&lt;sup&gt;**&lt;/sup&gt; (0.84)&lt;/td&gt;&lt;td&gt;-0.03 (0.03)&lt;/td&gt;&lt;td&gt;0.003 (0.05)&lt;/td&gt;&lt;td&gt;0.01 (0.04)&lt;/td&gt;&lt;td&gt;-0.05&lt;sup&gt;*&lt;/sup&gt; (0.03)&lt;/td&gt;&lt;td&gt;0.12 (0.14)&lt;/td&gt;&lt;td&gt;0.02 (0.08)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Condition*NFC&lt;/td&gt;&lt;td&gt;0.02 (0.35)&lt;/td&gt;&lt;td&gt;-4.01 (7.46)&lt;/td&gt;&lt;td&gt;-0.12 (0.27)&lt;/td&gt;&lt;td&gt;-0.15 (0.41)&lt;/td&gt;&lt;td&gt;0.14 (0.33)&lt;/td&gt;&lt;td&gt;-0.20 (0.23)&lt;/td&gt;&lt;td&gt;1.95 (1.35)&lt;/td&gt;&lt;td&gt;0.47 (0.64)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Condition*NFC*BPD&lt;/td&gt;&lt;td&gt;-0.01 (0.06)&lt;/td&gt;&lt;td&gt;1.62 (1.23)&lt;/td&gt;&lt;td&gt;0.03 (0.04)&lt;/td&gt;&lt;td&gt;0.04 (0.07)&lt;/td&gt;&lt;td&gt;-0.07 (0.06)&lt;/td&gt;&lt;td&gt;0.04 (0.04)&lt;/td&gt;&lt;td&gt;-0.25 (0.20)&lt;/td&gt;&lt;td&gt;-0.05 (0.11)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan=&quot;9&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Observations&lt;/td&gt;&lt;td&gt;288&lt;/td&gt;&lt;td&gt;287&lt;/td&gt;&lt;td&gt;287&lt;/td&gt;&lt;td&gt;287&lt;/td&gt;&lt;td&gt;287&lt;/td&gt;&lt;td&gt;287&lt;/td&gt;&lt;td&gt;55&lt;/td&gt;&lt;td&gt;218&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.23&lt;/td&gt;&lt;td&gt;0.06&lt;/td&gt;&lt;td&gt;0.06&lt;/td&gt;&lt;td&gt;0.07&lt;/td&gt;&lt;td&gt;0.04&lt;/td&gt;&lt;td&gt;0.11&lt;/td&gt;&lt;td&gt;0.09&lt;/td&gt;&lt;td&gt;0.07&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Adjusted R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.21&lt;/td&gt;&lt;td&gt;0.04&lt;/td&gt;&lt;td&gt;0.03&lt;/td&gt;&lt;td&gt;0.05&lt;/td&gt;&lt;td&gt;0.02&lt;/td&gt;&lt;td&gt;0.09&lt;/td&gt;&lt;td&gt;-0.04&lt;/td&gt;&lt;td&gt;0.04&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Residual Std. Error&lt;/td&gt;&lt;td&gt;0.85&lt;/td&gt;&lt;td&gt;18.00&lt;/td&gt;&lt;td&gt;0.64&lt;/td&gt;&lt;td&gt;1.00&lt;/td&gt;&lt;td&gt;0.81&lt;/td&gt;&lt;td&gt;0.55&lt;/td&gt;&lt;td&gt;1.17&lt;/td&gt;&lt;td&gt;1.38&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;F Statistic&lt;/td&gt;&lt;td&gt;11.81&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;2.55&lt;sup&gt;**&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;2.44&lt;sup&gt;**&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;2.95&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;1.81&lt;sup&gt;*&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;4.87&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.68&lt;/td&gt;&lt;td&gt;2.23&lt;sup&gt;**&lt;/sup&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan=&quot;9&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/td&gt;&lt;td colspan=&quot;8&quot; style=&quot;text-align:right&quot;&gt;&lt;sup&gt;*&lt;/sup&gt;p&lt;0.1; &lt;sup&gt;**&lt;/sup&gt;p&lt;0.05; &lt;sup&gt;***&lt;/sup&gt;p&lt;0.01&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</div>
+<p>No significant interaction and thus no visualization is needed.</p>
+<p>Mod: mom avoidance</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Create Table</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+&lt;table style=&quot;text-align:center&quot;&gt;&lt;caption&gt;&lt;strong&gt;Table 5. F and t-statistics of rational thinking and avoidance attachment to a mother figure as the moderators.&lt;/strong&gt;&lt;/caption&gt;
+&lt;tr&gt;&lt;td colspan=&quot;9&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td colspan=&quot;8&quot;&gt;&lt;em&gt;Dependent variable:&lt;/em&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td colspan=&quot;8&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;Trauma knowledge&lt;/td&gt;&lt;td&gt;Self-efficacy&lt;/td&gt;&lt;td&gt;Internal tools&lt;/td&gt;&lt;td&gt;Tradeoffs&lt;/td&gt;&lt;td&gt;Social support&lt;/td&gt;&lt;td&gt;Self-compassion&lt;/td&gt;&lt;td&gt;Getting back intention&lt;/td&gt;&lt;td&gt;Leaving intention&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;OLS&lt;/em&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;(1)&lt;/td&gt;&lt;td&gt;(2)&lt;/td&gt;&lt;td&gt;(3)&lt;/td&gt;&lt;td&gt;(4)&lt;/td&gt;&lt;td&gt;(5)&lt;/td&gt;&lt;td&gt;(6)&lt;/td&gt;&lt;td&gt;(7)&lt;/td&gt;&lt;td&gt;(8)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan=&quot;9&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Constant&lt;/td&gt;&lt;td&gt;5.49&lt;sup&gt;***&lt;/sup&gt; (0.92)&lt;/td&gt;&lt;td&gt;82.10&lt;sup&gt;***&lt;/sup&gt; (18.78)&lt;/td&gt;&lt;td&gt;5.34&lt;sup&gt;***&lt;/sup&gt; (0.66)&lt;/td&gt;&lt;td&gt;4.29&lt;sup&gt;***&lt;/sup&gt; (1.03)&lt;/td&gt;&lt;td&gt;6.08&lt;sup&gt;***&lt;/sup&gt; (0.80)&lt;/td&gt;&lt;td&gt;3.74&lt;sup&gt;***&lt;/sup&gt; (0.59)&lt;/td&gt;&lt;td&gt;2.50 (2.43)&lt;/td&gt;&lt;td&gt;8.73&lt;sup&gt;***&lt;/sup&gt; (1.66)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Condition&lt;/td&gt;&lt;td&gt;-1.24 (1.32)&lt;/td&gt;&lt;td&gt;19.77 (27.08)&lt;/td&gt;&lt;td&gt;-0.89 (0.94)&lt;/td&gt;&lt;td&gt;0.85 (1.49)&lt;/td&gt;&lt;td&gt;-0.45 (1.16)&lt;/td&gt;&lt;td&gt;-0.28 (0.85)&lt;/td&gt;&lt;td&gt;-1.68 (4.12)&lt;/td&gt;&lt;td&gt;-5.37&lt;sup&gt;**&lt;/sup&gt; (2.45)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;NFC&lt;/td&gt;&lt;td&gt;-0.58&lt;sup&gt;**&lt;/sup&gt; (0.27)&lt;/td&gt;&lt;td&gt;-5.28 (5.53)&lt;/td&gt;&lt;td&gt;-0.36&lt;sup&gt;*&lt;/sup&gt; (0.19)&lt;/td&gt;&lt;td&gt;-0.19 (0.30)&lt;/td&gt;&lt;td&gt;-0.50&lt;sup&gt;**&lt;/sup&gt; (0.24)&lt;/td&gt;&lt;td&gt;-0.16 (0.17)&lt;/td&gt;&lt;td&gt;-0.20 (0.73)&lt;/td&gt;&lt;td&gt;-1.70&lt;sup&gt;***&lt;/sup&gt; (0.49)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Avoidance&lt;/td&gt;&lt;td&gt;-0.64&lt;sup&gt;**&lt;/sup&gt; (0.28)&lt;/td&gt;&lt;td&gt;-7.01 (5.74)&lt;/td&gt;&lt;td&gt;-0.68&lt;sup&gt;***&lt;/sup&gt; (0.20)&lt;/td&gt;&lt;td&gt;0.03 (0.32)&lt;/td&gt;&lt;td&gt;-0.96&lt;sup&gt;***&lt;/sup&gt; (0.24)&lt;/td&gt;&lt;td&gt;-0.36&lt;sup&gt;**&lt;/sup&gt; (0.18)&lt;/td&gt;&lt;td&gt;0.11 (0.82)&lt;/td&gt;&lt;td&gt;-1.32&lt;sup&gt;***&lt;/sup&gt; (0.50)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Condition*Avoidance&lt;/td&gt;&lt;td&gt;0.58 (0.42)&lt;/td&gt;&lt;td&gt;-12.66 (8.56)&lt;/td&gt;&lt;td&gt;0.24 (0.30)&lt;/td&gt;&lt;td&gt;-0.43 (0.47)&lt;/td&gt;&lt;td&gt;0.37 (0.37)&lt;/td&gt;&lt;td&gt;0.04 (0.27)&lt;/td&gt;&lt;td&gt;0.22 (1.20)&lt;/td&gt;&lt;td&gt;1.30 (0.81)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;NFC*Avoidance&lt;/td&gt;&lt;td&gt;0.18&lt;sup&gt;**&lt;/sup&gt; (0.08)&lt;/td&gt;&lt;td&gt;1.44 (1.70)&lt;/td&gt;&lt;td&gt;0.18&lt;sup&gt;***&lt;/sup&gt; (0.06)&lt;/td&gt;&lt;td&gt;-0.07 (0.09)&lt;/td&gt;&lt;td&gt;0.21&lt;sup&gt;***&lt;/sup&gt; (0.07)&lt;/td&gt;&lt;td&gt;0.09 (0.05)&lt;/td&gt;&lt;td&gt;-0.05 (0.23)&lt;/td&gt;&lt;td&gt;0.39&lt;sup&gt;***&lt;/sup&gt; (0.15)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Condition*NFC&lt;/td&gt;&lt;td&gt;0.58 (0.39)&lt;/td&gt;&lt;td&gt;-6.08 (7.97)&lt;/td&gt;&lt;td&gt;0.22 (0.28)&lt;/td&gt;&lt;td&gt;-0.33 (0.44)&lt;/td&gt;&lt;td&gt;0.06 (0.34)&lt;/td&gt;&lt;td&gt;0.13 (0.25)&lt;/td&gt;&lt;td&gt;0.52 (1.14)&lt;/td&gt;&lt;td&gt;2.00&lt;sup&gt;***&lt;/sup&gt; (0.72)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Condition*NFC*Avoidance&lt;/td&gt;&lt;td&gt;-0.17 (0.12)&lt;/td&gt;&lt;td&gt;3.70 (2.49)&lt;/td&gt;&lt;td&gt;-0.06 (0.09)&lt;/td&gt;&lt;td&gt;0.16 (0.14)&lt;/td&gt;&lt;td&gt;-0.09 (0.11)&lt;/td&gt;&lt;td&gt;-0.04 (0.08)&lt;/td&gt;&lt;td&gt;-0.05 (0.34)&lt;/td&gt;&lt;td&gt;-0.52&lt;sup&gt;**&lt;/sup&gt; (0.23)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan=&quot;9&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Observations&lt;/td&gt;&lt;td&gt;288&lt;/td&gt;&lt;td&gt;287&lt;/td&gt;&lt;td&gt;287&lt;/td&gt;&lt;td&gt;287&lt;/td&gt;&lt;td&gt;287&lt;/td&gt;&lt;td&gt;287&lt;/td&gt;&lt;td&gt;55&lt;/td&gt;&lt;td&gt;218&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.17&lt;/td&gt;&lt;td&gt;0.05&lt;/td&gt;&lt;td&gt;0.10&lt;/td&gt;&lt;td&gt;0.08&lt;/td&gt;&lt;td&gt;0.12&lt;/td&gt;&lt;td&gt;0.08&lt;/td&gt;&lt;td&gt;0.05&lt;/td&gt;&lt;td&gt;0.11&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Adjusted R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.15&lt;/td&gt;&lt;td&gt;0.03&lt;/td&gt;&lt;td&gt;0.08&lt;/td&gt;&lt;td&gt;0.05&lt;/td&gt;&lt;td&gt;0.10&lt;/td&gt;&lt;td&gt;0.05&lt;/td&gt;&lt;td&gt;-0.10&lt;/td&gt;&lt;td&gt;0.08&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Residual Std. Error&lt;/td&gt;&lt;td&gt;0.88&lt;/td&gt;&lt;td&gt;18.06&lt;/td&gt;&lt;td&gt;0.63&lt;/td&gt;&lt;td&gt;0.99&lt;/td&gt;&lt;td&gt;0.77&lt;/td&gt;&lt;td&gt;0.56&lt;/td&gt;&lt;td&gt;1.20&lt;/td&gt;&lt;td&gt;1.35&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;F Statistic&lt;/td&gt;&lt;td&gt;8.29&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;2.31&lt;sup&gt;**&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;4.53&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;3.31&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;5.69&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;3.27&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.33&lt;/td&gt;&lt;td&gt;3.87&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan=&quot;9&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/td&gt;&lt;td colspan=&quot;8&quot; style=&quot;text-align:right&quot;&gt;&lt;sup&gt;*&lt;/sup&gt;p&lt;0.1; &lt;sup&gt;**&lt;/sup&gt;p&lt;0.05; &lt;sup&gt;***&lt;/sup&gt;p&lt;0.01&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</div>
+<p>The effects on leaving intention is significant Plot2: ConditionxNFCxMom avoidance -&gt; Leaving intention</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] &quot;[0,2.88]&quot; &quot;(2.88,5]&quot;</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="findings_files/figure-html5/unnamed-chunk-55-1.png" width="624" /></p>
+</div>
+<p>Try create another version of the model plot using geom_point</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="findings_files/figure-html5/unnamed-chunk-56-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="findings_files/figure-html5/unnamed-chunk-59-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+Call:
+lm(formula = In_End ~ Condition * poly(NFC, 2) * Mom_avoidance, 
+    data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.8694 -1.0092  0.2152  0.9451  2.8096 
+
+Coefficients:
+                                        Estimate Std. Error t value
+(Intercept)                              3.22244    0.42001   7.672
+Condition1                               1.08850    0.61618   1.767
+poly(NFC, 2)1                          -20.80505    6.61848  -3.143
+poly(NFC, 2)2                            0.19126    6.61261   0.029
+Mom_avoidance                           -0.05221    0.14710  -0.355
+Condition1:poly(NFC, 2)1                20.48248   10.17027   2.014
+Condition1:poly(NFC, 2)2                -3.67861    9.38075  -0.392
+Condition1:Mom_avoidance                -0.37690    0.21974  -1.715
+poly(NFC, 2)1:Mom_avoidance              4.74075    2.08975   2.269
+poly(NFC, 2)2:Mom_avoidance             -0.13057    1.86932  -0.070
+Condition1:poly(NFC, 2)1:Mom_avoidance  -5.01912    3.27613  -1.532
+Condition1:poly(NFC, 2)2:Mom_avoidance   0.33206    2.94477   0.113
+                                       Pr(&gt;|t|)    
+(Intercept)                            6.62e-13 ***
+Condition1                              0.07879 .  
+poly(NFC, 2)1                           0.00192 ** 
+poly(NFC, 2)2                           0.97695    
+Mom_avoidance                           0.72301    
+Condition1:poly(NFC, 2)1                0.04531 *  
+Condition1:poly(NFC, 2)2                0.69536    
+Condition1:Mom_avoidance                0.08781 .  
+poly(NFC, 2)1:Mom_avoidance             0.02433 *  
+poly(NFC, 2)2:Mom_avoidance             0.94438    
+Condition1:poly(NFC, 2)1:Mom_avoidance  0.12705    
+Condition1:poly(NFC, 2)2:Mom_avoidance  0.91033    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 1.355 on 206 degrees of freedom
+  (71 observations deleted due to missingness)
+Multiple R-squared:  0.1188,    Adjusted R-squared:  0.0717 
+F-statistic: 2.524 on 11 and 206 DF,  p-value: 0.005272</code></pre>
+</div>
+Uncertainty: visualize the standard errors
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 8 x 7
+  term        estimate std.error statistic  p.value conf.low conf.high
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)    8.73      1.66       5.25  3.66e-7   5.45     12.0   
+2 Condition1    -5.37      2.45      -2.19  2.97e-2 -10.2      -0.536 
+3 NFC           -1.70      0.489     -3.48  6.14e-4  -2.67     -0.737 
+4 Mom_avoida~   -1.32      0.499     -2.65  8.69e-3  -2.31     -0.338 
+5 Condition1~    1.30      0.805      1.62  1.07e-1  -0.286     2.89  
+6 NFC:Mom_av~    0.392     0.150      2.61  9.77e-3   0.0955    0.688 
+7 Condition1~    2.00      0.719      2.79  5.79e-3   0.587     3.42  
+8 Condition1~   -0.517     0.230     -2.25  2.57e-2  -0.971    -0.0635</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="findings_files/figure-html5/unnamed-chunk-62-1.png" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
