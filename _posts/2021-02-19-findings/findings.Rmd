@@ -1,9 +1,9 @@
 ---
-title: "findings"
+title: "Findings"
 description: |
-  A short description of the post.
+  Overall findings revealed significant interactions between trauma-informed messsages, psychosocial traits, and information processing patterns in predicting domestic violence attitudes among battered women with childhood trauma.
 author:
-  - name: "Kay"
+  - name: "Kay Chansiri"
 date: 02-19-2021
 output:
   distill::distill_article:
@@ -11,73 +11,74 @@ output:
 ---
 
 
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-library(tidyverse)
+
 ```
 
-Distill is a publication format for scientific and technical writing, native to the web.
-
-Learn more about using Distill at <https://rstudio.github.io/distill>.
 
 ```{r}
-#create_post("Conclusion")
+library(tidyverse)
+library(dplyr)
+library(stargazer)
+library(interactions)
+library(expss)
 ```
 
-Import data 
+
+
 ```{r}
 data<-rio::import(here::here("Bigdata.sav"))
 ```
 
-```{r}
-library(dplyr)
-```
+
+The current research project examines the effects of trauma-informed messages on attitudes towards domestic violence among battered women with childhood trauma. The moderating roles of psychosocial traits (i.e., borderline personality traits (BPD), adverse childhood experiences (ACE), fear of an abusive partner, attachment styles towards parents) and information processing patterns (i.e., emotional versus rational) are examined. 
+
+Below I provide tables and visuals of significant model examples from the dataset. 
 
 
-Three-way Interaction of Condition, NFC, and Psychosocial Traits: 
-
+Table 1 represents the three-ways interaction effects of conditions(trauma-informed messages vs. control)x NFC (i.e., rational information processing)x avoidance attachment towards a mother figure. 
 
 ```{r}
 data$Condition <- as.factor(data$Condition)
 ```
 
 
-MOd:ACE
 ```{r}
-model1<-lm(Trauma_Knowledge~Condition+NFC+ACE+Condition*ACE+ACE*NFC+Condition*NFC+Condition*NFC*ACE, data)
+#Create models according to DVs
+model1Mavo<-lm(Trauma_Knowledge~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
 
 ```
 
 
 ```{r}
-model2<-lm(DVS_state~Condition+NFC+ACE+Condition*ACE+ACE*NFC+Condition*NFC+Condition*NFC*ACE, data)
+model2Mavo<-lm(DVS_state~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
+```
+
+
+```{r}
+model3Mavo<-lm(Empowerment_InternalTools~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
+```
+
+
+```{r}
+model4Mavo<-lm(Empowerment_Tradeoffs~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
+
 
 ```
 
 
 ```{r}
-model3<-lm(Empowerment_InternalTools~Condition+NFC+ACE+Condition*ACE+ACE*NFC+Condition*NFC+Condition*NFC*ACE, data)
-
-```
-
-
-
-```{r}
-model4<-lm(Empowerment_Tradeoffs~Condition+NFC+ACE+Condition*ACE+ACE*NFC+Condition*NFC+Condition*NFC*ACE, data)
-
-
-```
-
-
-```{r}
-model5<-lm(Empowerment_ExpectationSupport~Condition+NFC+ACE+Condition*ACE+ACE*NFC+Condition*NFC+Condition*NFC*ACE, data)
+model5Mavo<-lm(Empowerment_ExpectationSupport~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
 
 ```
 
 
 
 ```{r}
-model6<-lm(SelfCompassion~Condition+NFC+ACE+Condition*ACE+ACE*NFC+Condition*NFC+Condition*NFC*ACE, data)
+model6Mavo<-lm(SelfCompassion~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
 
 
 ```
@@ -85,345 +86,20 @@ model6<-lm(SelfCompassion~Condition+NFC+ACE+Condition*ACE+ACE*NFC+Condition*NFC+
 
 
 ```{r}
-model7<-lm(In_GetBack~Condition+NFC+ACE+Condition*ACE+ACE*NFC+Condition*NFC+Condition*NFC*ACE, data)
+model7Mavo<-lm(In_End~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
+
 
 ```
 
 
-```{r}
-model8<-lm(In_End~Condition+NFC+ACE+Condition*ACE+ACE*NFC+Condition*NFC+Condition*NFC*ACE, data)
 
-```
-
-Create Table2
-
-```{r}
-library(stargazer)
-```
-
-
-```{r results = "asis"}
-stargazer(model1, model2, model3, model4, model5, model6, model7, model8,
+```{r, results = 'asis'}
+#Create Table 1
+stargazer(model1Mavo, model2Mavo, model3Mavo, model4Mavo, model5Mavo, model6Mavo, model7Mavo,
           
-          title =  "Table 2. F and t-statistics of rational thinking and adverse childhood experience as the moderators.",
+          title =  "Table 1. F and t-statistics of rational thinking and avoidance attachment to a mother figure as the moderators.",
           df =F,
-          dep.var.labels =c("Trauma knowledge", "Self-efficacy", "Internal tools", "Tradeoffs", "Social support", "Self-compassion", "Getting back intention", "Leaving intention"),
-          covariate.labels = c("Constant",
-                               "Condition", 
-                               "NFC",
-                               "ACE",
-                          "Condition*ACE", 
-                               "NFC*ACE",
-                          "Condition*NFC",
-                           "Condition*NFC*ACE"),
-        
-          
-          type = "html", 
-          align = TRUE, 
-  
-         
-    
-          intercept.bottom = F,
-          intercept.top = T,
-          digits = 2,
-          model.names = T,
-          single.row = T, out="Table2.html"
-          )
-```
-
-No sig outcomes. No visualization is done. 
-
-MOd:Fear
-```{r}
-model1<-lm(Trauma_Knowledge~Condition+NFC+Fear+Condition*Fear+Fear*NFC+Condition*NFC+Condition*NFC*Fear, data)
-
-```
-
-
-```{r}
-model2<-lm(DVS_state~Condition+NFC+Fear+Condition*Fear+Fear*NFC+Condition*NFC+Condition*NFC*Fear, data)
-
-```
-
-
-```{r}
-model3<-lm(Empowerment_InternalTools~Condition+NFC+Fear+Condition*Fear+Fear*NFC+Condition*NFC+Condition*NFC*Fear, data)
-
-```
-
-
-
-```{r}
-model4<-lm(Empowerment_Tradeoffs~Condition+NFC+Fear+Condition*Fear+Fear*NFC+Condition*NFC+Condition*NFC*Fear, data)
-
-
-```
-
-
-```{r}
-model5<-lm(Empowerment_ExpectationSupport~Condition+NFC+Fear+Condition*Fear+Fear*NFC+Condition*NFC+Condition*NFC*Fear, data)
-
-```
-
-
-
-```{r}
-model6<-lm(SelfCompassion~Condition+NFC+Fear+Condition*Fear+Fear*NFC+Condition*NFC+Condition*NFC*Fear, data)
-
-
-```
-
-
-
-```{r}
-model7<-lm(In_GetBack~Condition+NFC+Fear+Condition*Fear+Fear*NFC+Condition*NFC+Condition*NFC*Fear, data)
-```
-
-
-```{r}
-model8<-lm(In_End~Condition+NFC+Fear+Condition*Fear+Fear*NFC+Condition*NFC+Condition*NFC*Fear, data)
-```
-
-Create table 
-
-```{r}
-stargazer(model1, model2, model3, model4, model5, model6, model7, model8,
-          
-          title =  "Table 3. F and t-statistics of rational thinking and fear of the current partner as the moderators.",
-          df =F,
-          dep.var.labels =c("Trauma knowledge", "Self-efficacy", "Internal tools", "Tradeoffs", "Social support", "Self-compassion", "Getting back intention", "Leaving intention"),
-          covariate.labels = c("Constant",
-                               "Condition", 
-                               "NFC",
-                               "Fear",
-                          "Condition*Fear", 
-                               "NFC*Fear",
-                          "Condition*NFC",
-                           "Condition*NFC*Fear"),
-        
-          
-          type = "html", 
-          align = TRUE, 
-  
-         
-    
-          intercept.bottom = F,
-          intercept.top = T,
-          digits = 2,
-          model.names = T,
-          single.row = T, out="Table3.html"
-          )
-```
-
-The interaction effect is sig. on internal tools and will be visualized. 
-
-Plot1: ConditionxNFCXFear-> Self-efficacy
-
-```{r}
-newdata<-select(data, c("Fear", "NFC", "Condition", "DVS_state"))
-
-```
-
-```{r}
-newdata<-na.omit(newdata)
-```
-
-
-```{r}
-newdata$Fear <- cut(newdata$Fear, breaks=c(0, 1.17, 6), include.lowest= TRUE)
-```
-
-
-```{r}
-levels(newdata$Fear)
-```
-
-
-
-```{r}
-newdata$Condition <- factor(newdata$Condition,
-levels = c(0,1),
-labels = c("Control" , "Treatment"))
-```
-
-
-```{r}
-
-newdata$Fear <- factor(newdata$Fear,
-levels = c("[0,1.17]", "(1.17,6]"),
-labels = c("Less than 1.17", "More than 1.17"))
-
-
-plot1<-ggplot(newdata, aes(x  = NFC, y = DVS_state))+
-  geom_smooth(aes(linetype = Condition), method = "lm", color = "black")+
-  facet_wrap(~Fear, ncol = 2)+
-  theme_minimal()+
-  labs(x =  "Rational thinking", y = "Self-efficacy", subtitle = "Fear of the current partner")
-```
-
-
-```{r}
-plot1
-```
-
-
-Mod: BPD 
-
-```{r}
-model1<-lm(Trauma_Knowledge~Condition+NFC+BPD+Condition*BPD+BPD*NFC+Condition*NFC+Condition*NFC*BPD, data)
-
-```
-
-
-```{r}
-model2<-lm(DVS_state~Condition+NFC+BPD+Condition*BPD+BPD*NFC+Condition*NFC+Condition*NFC*BPD, data)
-
-
-```
-
-
-```{r}
-model3<-lm(Empowerment_InternalTools~Condition+NFC+BPD+Condition*BPD+BPD*NFC+Condition*NFC+Condition*NFC*BPD, data)
-
-
-```
-
-
-
-```{r}
-model4<-lm(Empowerment_Tradeoffs~Condition+NFC+BPD+Condition*BPD+BPD*NFC+Condition*NFC+Condition*NFC*BPD, data)
-
-
-
-```
-
-
-```{r}
-model5<-lm(Empowerment_ExpectationSupport~Condition+NFC+BPD+Condition*BPD+BPD*NFC+Condition*NFC+Condition*NFC*BPD, data)
-
-
-```
-
-
-
-```{r}
-model6<-lm(SelfCompassion~Condition+NFC+BPD+Condition*BPD+BPD*NFC+Condition*NFC+Condition*NFC*BPD, data)
-
-
-
-```
-
-
-
-```{r}
-model7<-lm(In_GetBack~Condition+NFC+BPD+Condition*BPD+BPD*NFC+Condition*NFC+Condition*NFC*BPD, data)
-
-```
-
-
-```{r}
-model8<-lm(In_End~Condition+NFC+BPD+Condition*BPD+BPD*NFC+Condition*NFC+Condition*NFC*BPD, data)
-
-```
-
-
-Crete table 4
-
-
-```{r}
-stargazer(model1, model2, model3, model4, model5, model6, model7, model8,
-          
-          title =  "Table 4. F and t-statistics of rational thinking and borderline personality traits as the moderators.",
-          df =F,
-          dep.var.labels =c("Trauma knowledge", "Self-efficacy", "Internal tools", "Tradeoffs", "Social support", "Self-compassion", "Getting back intention", "Leaving intention"),
-          covariate.labels = c("Constant",
-                               "Condition", 
-                               "NFC",
-                               "BPD",
-                          "Condition*BPD", 
-                               "NFC*BPD",
-                          "Condition*NFC",
-                           "Condition*NFC*BPD"),
-        
-          
-          type = "html", 
-          align = TRUE, 
-  
-         
-    
-          intercept.bottom = F,
-          intercept.top = T,
-          digits = 2,
-          model.names = T,
-          single.row = T, out="Table4.html"
-          )
-```
-
-
-No significant interaction and thus no visualization is needed. 
-
-Mod: mom avoidance 
-
-```{r}
-model1<-lm(Trauma_Knowledge~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
-
-```
-
-
-```{r}
-model2<-lm(DVS_state~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
-```
-
-
-```{r}
-model3<-lm(Empowerment_InternalTools~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
-```
-
-
-
-```{r}
-model4<-lm(Empowerment_Tradeoffs~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
-
-
-```
-
-
-```{r}
-model5<-lm(Empowerment_ExpectationSupport~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
-
-```
-
-
-
-```{r}
-model6<-lm(SelfCompassion~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
-
-
-```
-
-
-
-```{r}
-model7<-lm(In_GetBack~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
-```
-
-
-```{r}
-model8<-lm(In_End~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
-
-
-```
-
-
-
-Create Table 
-
-```{r}
-stargazer(model1, model2, model3, model4, model5, model6, model7, model8,
-          
-          title =  "Table 5. F and t-statistics of rational thinking and avoidance attachment to a mother figure as the moderators.",
-          df =F,
-          dep.var.labels =c("Trauma knowledge", "Self-efficacy", "Internal tools", "Tradeoffs", "Social support", "Self-compassion", "Getting back intention", "Leaving intention"),
+          dep.var.labels =c("Trauma knowledge", "Self-efficacy", "Internal tools", "Tradeoffs", "Social support", "Self-compassion", "Leaving intention"),
           covariate.labels = c("Constant",
                                "Condition", 
                                "NFC",
@@ -443,106 +119,161 @@ stargazer(model1, model2, model3, model4, model5, model6, model7, model8,
           intercept.top = T,
           digits = 2,
           model.names = T,
-          single.row = T, out="Table5.html"
+          single.row = T, out="Table1"
           )
 ```
 
-The effects on leaving intention is significant Plot2: ConditionxNFCxMom avoidance -> Leaving intention  
-
+According to Table 1, the three-way interaction effect on leaving intention is significant. Let's visualize the interaction.
 
 
 ```{r}
-newdata<-select(data, c("Mom_avoidance", "NFC", "Condition", "In_End"))
+Plot1data <- data %>% select("Mom_avoidance", "NFC", "Condition", "In_End")
+
+```
+
+The first step before visualizing the interaction is to identify a significant region of avoidance attachment moderated by the interaction of two focal predictors: condition and rational thinking (i.e., NFC = Need for Cognition). 
+
+
+Below are the Johnson-neyman results,  basic interaction visual from probe_interaction, and the Johnson-Neyman plot:
+
+```{r}
+
+#JN analysis: focal predictors cannot be a factor. 
+
+Plot1data$Condition<-as.numeric(Plot1data$Condition)
+
+
+model7MavoJN<-lm(In_End~Condition*NFC*Mom_avoidance, Plot1data)
+
+probe_interaction(model7MavoJN, pred = "Condition", modx = "NFC", mod2 = "Mom_avoidance", alpha = .1,
+                  mod2.labels = c("Mean of avoidance - SD", "Mean of avoidance", "Mean of avoidance + 1 SD"),
+  
+                  
+y.label = "Leaving intention", 
+x.label = "Condition",
+main.title = "3-ways interaction:condition, rational thinking, avoidance attachment")
+
+```
+
+```{r echo = FALSE, results= 'hide'}
+sim_slopes(model7MavoJN, pred = "Condition", modx = "NFC", mod2 = "Mom_avoidance", jnplot = TRUE, 
+           mod2.labels = c("Mean of avoidance - SD", "Mean of avoidance", "Mean of avoidance + 1 SD"),
+  
+                
+modx.label = "Rational thinking pattern",
+main.title = "3-ways interaction:condition, rational thinking, avoidance attachment")
+           
+           
+           
+           
+```
+
+According to the johnson neyman output above, the interaction between condition and rational thinking is significant among women scored less than the mean (2.72) of avoidance attachment. We will use ggplot to visualized the three-way interaction according to the significant region. 
+
+
+```{r}
+Plot1data <- data %>% select("Mom_avoidance", "NFC", "Condition", "In_End")
 
 ```
 
 
 ```{r}
-#Indicate JN from SPSS 
-newdata$Mom_avoidance <- cut(newdata$Mom_avoidance, breaks=c(0, 2.88, 5), include.lowest= TRUE)
+ 
+Plot1data$Mom_avoidance <- cut(Plot1data$Mom_avoidance, breaks=c(0, 2.72, 5), include.lowest= TRUE)
 ```
 
 ```{r}
-levels(newdata$Mom_avoidance)
+levels(Plot1data$Mom_avoidance)
 ```
 
 
 
 ```{r}
-newdata$Condition <- factor(newdata$Condition,
+Plot1data$Condition <- factor(Plot1data$Condition,
 levels = c(0,1),
 labels = c("Control" , "Treatment"))
 ```
 
 ```{r}
-newdata<-na.omit(newdata)
+Plot1data<-na.omit(Plot1data)
 ```
 
 
 
 ```{r}
 
-newdata$Mom_avoidance <- factor(newdata$Mom_avoidance,
-levels = c("[0,2.88]", "(2.88,5]"),
-labels = c("Less than 2.88", "More than 2.88"))
+Plot1data$Mom_avoidance <- factor(Plot1data$Mom_avoidance,
+levels = c("[0,2.72]", "(2.72,5]"),
+labels = c("Less than 2.72", "More than 2.72"))
 
 
-plot2<-ggplot(newdata, aes(x  = NFC, y = In_End))+
-  geom_smooth(aes(linetype = Condition), method = "lm", color = "black")+
+
+
+```
+
+
+```{r}
+plot1<-ggplot(Plot1data, aes(x  = NFC, y = In_End, color = Condition))+
+  geom_point()+
+  geom_smooth(method = "lm")+
   facet_wrap(~Mom_avoidance, ncol = 2)+
   theme_minimal()+
-  labs(x =  "Rational thinking", y = "Intention to end the relationship", subtitle = "Avoidance of a mother figure")
+  labs(x =  "Rational thinking", y = "Intention to end the relationship", subtitle = "Plot1: Avoidance of a mother figure")
 
 ```
 
 
 ```{r}
-plot2
+plot1
 ```
 
-
-Try create another version of the model plot using geom_point
-
+The plot (method = "lm" for geom_smooth) indicates a seemingly significant relationship between condition and rational thinking at the level of avoidance less than 2.72. What if we don't force linear modeling?
 
 ```{r}
-ggplot(newdata, aes(x= NFC, y = In_End))+
-  geom_point(aes(color = Condition))+
+Plot1.1<- ggplot(Plot1data, aes(NFC, In_End, color = Condition))+
+  geom_point()+
+  geom_smooth()+
   facet_wrap(~Mom_avoidance)+
-  geom_smooth(aes(color = Condition))
-               
-  
+  theme_minimal()+
+  labs(x =  "Rational thinking", y = "Intention to end the relationship", subtitle = "Plot2: Avoidance of a mother figure")
+Plot1.1 
 ```
 
 
-```{r}
-#install.packages("interactions")
-```
-```{r}
-library(interactions)
-```
+The visual does not look linear but rather cubic relationships. Let's visualize using the interaction package to see whether the cubic assumption is true. 
 
 
 ```{r}
-interact_plot(model8, pred = NFC, modx = Condition, mod2 = Mom_avoidance, linearity.check = TRUE, plot.points = 2)
-```
 
-```{r}
-model8.1 <- lm(In_End~Condition*poly(NFC,2)*Mom_avoidance, data)
-summary(model8.1)
-#Not significant .. so use the linear?
-```
-
-
-Uncertainty: visualize the standard errors 
-```{r}
-un_model8<-broom::tidy(model8, conf.int = TRUE)
-un_model8
+interact_plot(model7Mavo,
+pred = NFC, 
+modx = Condition,
+mod2 = Mom_avoidance, 
+linearity.check = TRUE, 
+plot.points = TRUE,
+jitter = 0.1,
+modx.labels = c("Control", "Treatment"),
+y.label = "Leaving intention", 
+x.label = "Rational thinking",
+main.title = "3-ways interaction:condition, rational thinking, avoidance attachment",
+mod2.labels = c("Mean of avoidance - 1SD", "Mean of avoidance", "Mean of avoidance + 1 SD"))+ #still did not adjust the fontsize yet)
+  theme_minimal()
 ```
 
 
+Testing linearity reveals that at the level of avoidance less than 1SD and more than 1SD, the relationship betweeb the treatment condition and NFC seems curvilinear, in consistent to Plot 2. We can say that there is a significant interaction between condition, rational thinking, and avoidance and the relationship is likely not linear. Informed by the Johnson-Neyman analysis, among women scored on mom_avoidance lower than 2.72, the treatment condition works better in predicting women's leaving intention especially when the level of rational thinking is higher than 1 SD of its mean (about 3.97).
+
+Let' see some estimates and stardard errors and the visualize uncertainty of the model. 
 
 ```{r}
-ggplot(un_model8, aes(term, estimate))+
+un_model7Mavo<-broom::tidy(model7Mavo, conf.int = TRUE)
+un_model7Mavo
+```
+
+
+
+```{r}
+ggplot(un_model7Mavo, aes(term, estimate))+
   geom_hline(yintercept = 0,
              color = "cornflowerblue",
              linetype = 2)+
@@ -551,5 +282,435 @@ ggplot(un_model8, aes(term, estimate))+
   coord_flip()
 ```
 
+According to the uncertainty plot, the stadard errors of the three-way interaction is close to zero, indicating small effect sizes. The main effect of condition is the highest with a quite wide range of standard errors. 
 
+
+There is a high chance that the model is mis-specified or maybe not linear as I suspected at the beigning. Let's model the relationship in a non-linear pattern.  
+
+```{r}
+NL<-lm(In_End~Condition*Mom_avoidance*poly(NFC, 2), data)
+summary(NL)
+```
+
+The non-linear model is also not significant. In conclusion, the interaction between condition, avoidance attachment towards a mother figure, and rational thinking in predicting leaving intention is small in effect size. The relationship might be non-linear but the sample size could be too small for sufficient power analysis to detect the non-linear interaction. 
+
+Let's move on to the next model; testing the moderating roles of rational thinking pattern and anxiety attachment towards a mother figure. 
+
+
+```{r}
+#Create models according to DVs
+model1Manx<-lm(Trauma_Knowledge~Condition+NFC+Mom_anxiety+Condition*Mom_anxiety+Mom_anxiety*NFC+Condition*NFC+Condition*NFC*Mom_anxiety, data)
+
+```
+
+
+```{r}
+model2Manx<-lm(DVS_state~Condition+NFC+Mom_anxiety+Condition*Mom_anxiety+Mom_anxiety*NFC+Condition*NFC+Condition*NFC*Mom_anxiety, data)
+```
+
+
+```{r}
+model3Manx<-lm(Empowerment_InternalTools~Condition+NFC+Mom_anxiety+Condition*Mom_anxiety+Mom_anxiety*NFC+Condition*NFC+Condition*NFC*Mom_anxiety, data)
+```
+
+
+```{r}
+model4Manx<-lm(Empowerment_Tradeoffs~Condition+NFC+Mom_anxiety+Condition*Mom_anxiety+Mom_anxiety*NFC+Condition*NFC+Condition*NFC*Mom_anxiety, data)
+
+```
+
+
+```{r}
+model5Manx<-lm(Empowerment_ExpectationSupport~Condition+NFC+Mom_anxiety+Condition*Mom_anxiety+Mom_anxiety*NFC+Condition*NFC+Condition*NFC*Mom_anxiety, data)
+```
+
+
+
+```{r}
+model6Manx<-lm(SelfCompassion~Condition+NFC+Mom_anxiety+Condition*Mom_anxiety+Mom_anxiety*NFC+Condition*NFC+Condition*NFC*Mom_anxiety, data)
+
+```
+
+
+
+```{r}
+model7Manx<-lm(In_End~Condition+NFC+Mom_anxiety+Condition*Mom_anxiety+Mom_anxiety*NFC+Condition*NFC+Condition*NFC*Mom_anxiety, data)
+
+
+```
+
+
+
+```{r, results = 'asis'}
+#Create Table 2
+stargazer(model1Manx, model2Manx, model3Manx, model4Manx, model5Manx, model6Manx, model7Manx,
+          
+          title =  "Table 2. F and t-statistics of rational thinking and anxious attachment to a mother figure as the moderators.",
+          df =F,
+          dep.var.labels =c("Trauma knowledge", "Self-efficacy", "Internal tools", "Tradeoffs", "Social support", "Self-compassion", "Leaving intention"),
+          covariate.labels = c("Constant",
+                               "Condition", 
+                               "NFC",
+                               "Anxiety",
+                          "Condition*Anxiety", 
+                               "NFC*Anxiety",
+                          "Condition*NFC",
+                           "Condition*NFC*Anxiety"),
+        
+          
+          type = "html", 
+          align = TRUE, 
+  
+         
+    
+          intercept.bottom = F,
+          intercept.top = T,
+          digits = 2,
+          model.names = T,
+          single.row = T, out="Table2"
+          )
+```
+
+Like the avoidance model previously, the three-way interaction effect is significant on leaving intention only. Let's visualize the interaction.
+
+
+Just like what we did earlier, the first step before visualizing the interaction is to identify a significant region of anxiety attachment moderated by the interaction of two focal predictors: condition and rational thinking (i.e., NFC = Need for Cognition). 
+
+
+Below are the Johnson-neyman results,  basic interaction visual from probe_interaction, and the Johnson-Neyman plot:
+
+```{r}
+
+#JN analysis: focal predictors cannot be a factor. 
+
+Plot2data<-data %>% select(Condition, Mom_anxiety, In_End, NFC)
+
+Plot2data$Condition<-as.numeric(Plot2data$Condition)
+
+
+model7ManxJN<-lm(In_End~Condition*NFC*Mom_anxiety, Plot2data)
+
+probe_interaction(model7ManxJN, pred = "Condition", modx = "NFC", mod2 = "Mom_anxiety", alpha = .1,
+                  mod2.labels = c("Mean of anxiety - SD", "Mean of anxiety", "Mean of anxiety + 1 SD"),
+  
+                  
+y.label = "Leaving intention", 
+x.label = "Condition",
+main.title = "3-ways interaction:condition, rational thinking, anxiety attachment")
+
+```
+
+```{r echo = FALSE, results= 'hide'}
+sim_slopes(model7ManxJN, pred = "Condition", modx = "NFC", mod2 = "Mom_anxiety", jnplot = TRUE, 
+           mod2.labels = c("Mean of anxiety - SD", "Mean of anxiety", "Mean of anxiety + 1 SD"),
+  
+                
+modx.label = "Rational thinking pattern",
+main.title = "3-ways interaction:condition, rational thinking, anxiety attachment")
+           
+           
+           
+           
+```
+
+
+The Johnson-Neyman analysis indicates none significant region of the three-way interactions. There is no need to visualize the interaction. Let's do some uncertainty check of the model. 
+
+```{r}
+un_model7Manx<-broom::tidy(model7Manx, conf.int = TRUE)
+un_model7Manx
+```
+
+
+
+```{r}
+ggplot(un_model7Manx, aes(term, estimate))+
+  geom_hline(yintercept = 0,
+             color = "cornflowerblue",
+             linetype = 2)+
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high))+
+  geom_point()+
+  coord_flip()
+```
+
+According to the uncertainty, the stadard errors of all estimates cross or close to zero, indicating that the model is not well speficifed. In other words, there are no valuable interaction effects of condition, anxious attachment, and ratianal thinking and their main effects.
+
+In addition to attachment towards a mother figure, literature pointed out that attachment towards a father figure may influence battered women's attitudes towards abusive relationships. Let's explore the moderating roles of avoidance attachment towards a father figure and rational thinking pattern. 
+
+
+```{r}
+#Create models according to DVs
+model1Davo<-lm(Trauma_Knowledge~Condition+NFC+Dad_avoidance+Condition*Dad_avoidance+Dad_avoidance*NFC+Condition*NFC+Condition*NFC*Dad_avoidance, data)
+
+```
+
+
+```{r}
+model2Davo<-lm(DVS_state~Condition+NFC+Dad_avoidance+Condition*Dad_avoidance+Dad_avoidance*NFC+Condition*NFC+Condition*NFC*Dad_avoidance, data)
+```
+
+
+```{r}
+model3Davo<-lm(Empowerment_InternalTools~Condition+NFC+Dad_avoidance+Condition*Dad_avoidance+Dad_avoidance*NFC+Condition*NFC+Condition*NFC*Dad_avoidance, data)
+```
+
+
+```{r}
+model4Davo<-lm(Empowerment_Tradeoffs~Condition+NFC+Dad_avoidance+Condition*Dad_avoidance+Dad_avoidance*NFC+Condition*NFC+Condition*NFC*Dad_avoidance, data)
+
+
+```
+
+
+```{r}
+model5Davo<-lm(Empowerment_ExpectationSupport~Condition+NFC+Dad_avoidance+Condition*Dad_avoidance+Dad_avoidance*NFC+Condition*NFC+Condition*NFC*Dad_avoidance, data)
+
+```
+
+
+
+```{r}
+model6Davo<-lm(SelfCompassion~Condition+NFC+Dad_avoidance+Condition*Dad_avoidance+Dad_avoidance*NFC+Condition*NFC+Condition*NFC*Dad_avoidance, data)
+
+
+```
+
+
+
+```{r}
+model7Davo<-lm(In_End~Condition+NFC+Dad_avoidance+Condition*Dad_avoidance+Dad_avoidance*NFC+Condition*NFC+Condition*NFC*Dad_avoidance, data)
+
+
+```
+
+
+
+```{r, results = 'asis'}
+#Create Table 3
+stargazer(model1Davo, model2Davo, model3Davo, model4Davo, model5Davo, model6Davo, model7Davo,
+          
+          title =  "Table 3. F and t-statistics of rational thinking and avoidance attachment to a father figure as the moderators.",
+          df =F,
+          dep.var.labels =c("Trauma knowledge", "Self-efficacy", "Internal tools", "Tradeoffs", "Social support", "Self-compassion", "Leaving intention"),
+          covariate.labels = c("Constant",
+                               "Condition", 
+                               "NFC",
+                               "Avoidance",
+                          "Condition*Avoidance", 
+                               "NFC*Avoidance",
+                          "Condition*NFC",
+                           "Condition*NFC*Avoidance"),
+        
+          
+          type = "html", 
+          align = TRUE, 
+  
+         
+    
+          intercept.bottom = F,
+          intercept.top = T,
+          digits = 2,
+          model.names = T,
+          single.row = T, out="Table3"
+          )
+```
+
+The three-way interaction effects on self-efficacy in leaving an abusive relationship is one of the significant effects. Let's visualize the interaction. Before doing that, we should indicate a significant region using the Johnson-Neyman technique. 
+
+
+Below are the Johnson-neyman results,  basic interaction visual from probe_interaction, and the Johnson-Neyman plot:
+
+```{r}
+
+#JN analysis: focal predictors cannot be a factor. 
+
+Plot3data <- data %>% select(Condition, Dad_avoidance, NFC, DVS_state)
+
+Plot3data$Condition<-as.numeric(Plot3data$Condition)
+
+
+model7DavoJN<-lm(DVS_state~Condition*NFC*Dad_avoidance, Plot3data)
+
+probe_interaction(model7DavoJN, pred = "Condition", modx = "NFC", mod2 = "Dad_avoidance", alpha = .1,
+                  mod2.labels = c("Mean of avoidance - SD", "Mean of avoidance", "Mean of avoidance + 1 SD"),
+  
+                  
+y.label = "Domestic violence self-efficacy", 
+x.label = "Condition",
+main.title = "3-ways interaction:condition, rational thinking, avoidance attachment")
+
+```
+
+```{r echo = FALSE, results= 'hide'}
+sim_slopes(model7DavoJN, pred = "Condition", modx = "NFC", mod2 = "Dad_avoidance", jnplot = TRUE, 
+           mod2.labels = c("Mean of avoidance - SD", "Mean of avoidance", "Mean of avoidance + 1 SD"),
+  
+                
+modx.label = "Rational thinking pattern",
+main.title = "3-ways interaction:condition, rational thinking, avoidance attachment")
+           
+           
+           
+           
+```
+
+The Johnson Neyman analysis indicates significant region of avoidance atatchment at more than 4.17 approximately. Let's use ggplot to visualize the interaction. This time, I will do a black and whie theme as it's quite a standard for a peer-reviewed publication. 
+
+
+```{r}
+Plot3data<-data %>% select(Condition, Dad_avoidance, DVS_state, NFC)
+
+
+```
+
+
+
+```{r}
+Plot3data$Dad_avoidance <- cut(Plot3data$Dad_avoidance, breaks=c(0, 4.17, 5), include.lowest= TRUE)
+Plot3data$Dad_avoidance <- factor(Plot3data$Dad_avoidance,
+levels = c("[0,4.17]", "(4.17,5]"),
+labels = c("Less than 4.17", "More than 4.17"))
+```
+
+```{r}
+levels(Plot3data$Dad_avoidance)
+
+```
+
+
+
+```{r}
+Plot3data$Condition <- factor(Plot3data$Condition,
+levels = c(0,1),
+labels = c("Control" , "Treatment"))
+```
+
+```{r}
+Plot3data<-na.omit(Plot3data)
+```
+
+
+
+```{r}
+
+
+
+plot3<-ggplot(Plot3data, aes(x  = NFC, y = DVS_state))+
+  geom_smooth(aes(linetype = Condition), method = "lm", color = "black")+
+  facet_wrap(~Dad_avoidance, ncol = 2)+
+  theme_minimal()+
+  labs(x =  "Rational thinking", y = "Self-efficacy", subtitle = "Avoidance of a father figure")
+
+
+```
+
+
+```{r}
+plot3
+```
+
+The plot (method = "lm" for geom_smooth) indicates significant relationship between condition and rational thinking at the level of dad_avoidance more than 4.17. Among participants in that group, trauma-informed messages worked better in predicting self-efficacy when rational thinking is lower than 1 SD (about 2.49). 
+
+Let's see if the data would reflect the same trend if we don't force linear interaction. 
+
+```{r}
+Plot3.1<- ggplot(Plot3data, aes(NFC, DVS_state, color = Condition))+
+  geom_point()+
+  geom_smooth()+
+  facet_wrap(~Dad_avoidance)+
+  labs(title = "Three-way interaction: conditions, avoidance of a father figure, \n and rational thinking", 
+       subtitle = "Avoidance scores", 
+       x = "Rational thinking", 
+       y = "Domestic violence self-efficacy")+
+  theme(title = element_text(size = 8))
+Plot3.1 
+```
+
+
+Although the visual does not look linear and more represents cubic relationships, there seems to be an interaction of the conditions and lower level of rational thinking at the avoidance scores more than 4.17, in consistence with the linear model fitting that we did previously.   
+
+Let's visualize using the interaction package to see whether the assumption is true. 
+
+
+```{r}
+library(interactions)
+interact_plot(model7Davo, pred = NFC, modx = Condition, mod2 = Dad_avoidance, linearity.check = TRUE, plot.points = 2)
+```
+
+The interaction plot reveals seemingly non-linear relationships at three main data points of the avoidance variable. In addition to the significant interactions of condition and rational thinking at the level of avoidance + 1 SD, there seems to be a significant interaction at the lvel of avoidance - 1SD in a non-linear trend. Let's fit the interactions as a non-linear model. 
+
+
+```{r}
+NLdata<-data %>% select(DVS_state, Condition, NFC, Dad_avoidance)
+NLdata<-na.omit(NLdata)
+NL<-lm(DVS_state~Condition*NFC*poly(Dad_avoidance,2), NLdata)
+summary(NL)
+```
+
+The results showed that the first-order model is significant whereas the second order is not. Let's compare whether adding the polynomial term for NFC significantly improved the linear interaction model fit. 
+```{r}
+anova(NL, model2Davo)
+```
+
+The ANOVA test reveals no significant different across the linear and non-linear model. Thus, we will go with the linear model as it's more parsimonous. 
+
+Let's check the uncertainty. 
+
+```{r}
+un_model2Davo<-broom::tidy(model2Davo, conf.int = TRUE)
+un_model2Davo
+```
+
+
+
+```{r}
+ggplot(un_model2Davo, aes(term, estimate))+
+  geom_hline(yintercept = 0,
+             color = "cornflowerblue",
+             linetype = 2)+
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high))+
+  geom_point()+
+  coord_flip()
+```
+
+According to the uncertainty, the stadard errors of the three-way interaction is close to zero, indicating small effect sizes. 
+
+Several 3 ways interaction models provided very small effect sizes with high uncertainty and confusing non-linear relationships. Let's try some two-ways interaction models of the dataset. 
+
+Extensive reserch indicates that adverse childhood experiences (ACE) significantly predicted attitudes towards domestic violence. Let's explore the moderating role of ACE in predicting knowledge about trauma after participants are exposed to trauma-informed messages (versus traditional domestic violence intervention messages)
+
+```{r}
+ggplot(data, aes(ACE, Trauma_Knowledge, color = Condition))+
+  geom_point()+
+  geom_smooth()
+```
+
+Let's also explore other moderators and outcomes. 
+```{r}
+ggplot(data, aes(Fear, Trauma_Knowledge, color = Condition))+
+  geom_point()+
+  geom_smooth()
+```
+
+
+
+```{r}
+ggplot(data, aes(BPD, Trauma_Knowledge, color = Condition))+
+  geom_point()+
+  geom_smooth()
+```
+
+
+
+```{r}
+ggplot(data, aes(BPD, In_End, color = Condition))+
+  geom_point()+
+  geom_smooth()
+```
+
+```{r}
+PlotDA<-ggplot(data, aes(Dad_anxiety, Trauma_Knowledge, color = Condition))+
+  geom_point()+
+  geom_smooth()
+```
 
