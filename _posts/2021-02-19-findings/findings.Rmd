@@ -25,12 +25,18 @@ library(dplyr)
 library(stargazer)
 library(interactions)
 library(expss)
+library(cowplot)
+#added this ^ library
 ```
 
 
 
-```{r}
+```{r Importing_data}
 data<-rio::import(here::here("Bigdata.sav"))
+
+data$Condition <- as.factor(data$Condition)
+
+#condensed this section
 ```
 
 
@@ -41,53 +47,23 @@ Below I provide tables and visuals of significant model examples from the datase
 
 Table 1 represents the three-ways interaction effects of conditions(trauma-informed messages vs. control)x NFC (i.e., rational information processing)x avoidance attachment towards a mother figure. 
 
-```{r}
-data$Condition <- as.factor(data$Condition)
-```
-
-
-```{r}
+```{r Models}
 #Create models according to DVs
+#Condensed this into one code block for you
+
 model1Mavo<-lm(Trauma_Knowledge~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
 
-```
-
-
-```{r}
 model2Mavo<-lm(DVS_state~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
-```
 
-
-```{r}
 model3Mavo<-lm(Empowerment_InternalTools~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
-```
 
-
-```{r}
 model4Mavo<-lm(Empowerment_Tradeoffs~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
 
-
-```
-
-
-```{r}
 model5Mavo<-lm(Empowerment_ExpectationSupport~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
 
-```
-
-
-
-```{r}
 model6Mavo<-lm(SelfCompassion~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
 
-
-```
-
-
-
-```{r}
 model7Mavo<-lm(In_End~Condition+NFC+Mom_avoidance+Condition*Mom_avoidance+Mom_avoidance*NFC+Condition*NFC+Condition*NFC*Mom_avoidance, data)
-
 
 ```
 
@@ -153,6 +129,8 @@ y.label = "Leaving intention",
 x.label = "Condition",
 main.title = "3-ways interaction:condition, rational thinking, avoidance attachment")
 
+#I'm not entirely familiar with the functions that you're using for this visualization, so I didn't touch much of your code. However - one suggestion - are you able to label your groups "1" and "2" for this figure and related figures? That is, the "1" and "2" along the x-axis were likely treatment and control groups, but I wasn't entirely sure.
+
 ```
 
 ```{r echo = FALSE, results= 'hide'}
@@ -173,70 +151,39 @@ According to the johnson neyman output above, the interaction between condition 
 
 ```{r}
 Plot1data <- data %>% select("Mom_avoidance", "NFC", "Condition", "In_End")
-
-```
-
-
-```{r}
- 
 Plot1data$Mom_avoidance <- cut(Plot1data$Mom_avoidance, breaks=c(0, 2.72, 5), include.lowest= TRUE)
-```
-
-```{r}
 levels(Plot1data$Mom_avoidance)
-```
-
-
-
-```{r}
 Plot1data$Condition <- factor(Plot1data$Condition,
 levels = c(0,1),
 labels = c("Control" , "Treatment"))
-```
-
-```{r}
 Plot1data<-na.omit(Plot1data)
-```
-
-
-
-```{r}
-
 Plot1data$Mom_avoidance <- factor(Plot1data$Mom_avoidance,
 levels = c("[0,2.72]", "(2.72,5]"),
-labels = c("Less than 2.72", "More than 2.72"))
-
-
-
-
-```
-
-
-```{r}
+labels = c("Less than mean avoidance score", "More than mean avoidance score"))
 plot1<-ggplot(Plot1data, aes(x  = NFC, y = In_End, color = Condition))+
-  geom_point()+
+  # geom_point()+
   geom_smooth(method = "lm")+
   facet_wrap(~Mom_avoidance, ncol = 2)+
   theme_minimal()+
   labs(x =  "Rational thinking", y = "Intention to end the relationship", subtitle = "Plot1: Avoidance of a mother figure")
 
-```
-
-
-```{r}
 plot1
+#this plot is communicating a ton of information in a single figure. I appreciate how you used titles, axes, and a legend to clearly translate information. My two suggestions are to exclude the geom_point() function and clarify how you have facet wrapped by naming the variable of interest.
 ```
+
 
 The plot (method = "lm" for geom_smooth) indicates a seemingly significant relationship between condition and rational thinking at the level of avoidance less than 2.72. What if we don't force linear modeling?
 
 ```{r}
 Plot1.1<- ggplot(Plot1data, aes(NFC, In_End, color = Condition))+
-  geom_point()+
+  # geom_point()+
   geom_smooth()+
   facet_wrap(~Mom_avoidance)+
   theme_minimal()+
   labs(x =  "Rational thinking", y = "Intention to end the relationship", subtitle = "Plot2: Avoidance of a mother figure")
 Plot1.1 
+
+#Changes re-applied here
 ```
 
 
@@ -569,7 +516,9 @@ Plot3data<-data %>% select(Condition, Dad_avoidance, DVS_state, NFC)
 Plot3data$Dad_avoidance <- cut(Plot3data$Dad_avoidance, breaks=c(0, 4.17, 5), include.lowest= TRUE)
 Plot3data$Dad_avoidance <- factor(Plot3data$Dad_avoidance,
 levels = c("[0,4.17]", "(4.17,5]"),
-labels = c("Less than 4.17", "More than 4.17"))
+labels = c("Less than mean dad avoidance", "More than mean dad avoidance"))
+
+#Updated the labels here as per the comments I made above on naming 
 ```
 
 ```{r}
