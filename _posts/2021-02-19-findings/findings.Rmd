@@ -146,12 +146,14 @@ Plot1data$Condition<-as.numeric(Plot1data$Condition)
 model7MavoJN<-lm(In_End~Condition*NFC*Mom_avoidance, Plot1data)
 
 probe_interaction(model7MavoJN, pred = "Condition", modx = "NFC", mod2 = "Mom_avoidance", alpha = .1,
-                  mod2.labels = c("Mean of avoidance - SD", "Mean of avoidance", "Mean of avoidance + 1 SD"),
+                  mod2.labels = c("Mean of avoidance \n- 1 SD", ### MK: Just moved the SD parts one line below so it fits the screen.
+                                  "Mean of avoidance\n", 
+                                  "Mean of avoidance \n+ 1 SD"), 
   
                   
-y.label = "Leaving intention", 
+y.label = "Leaving intention",
 x.label = "Condition",
-main.title = "3-ways interaction:condition, rational thinking, avoidance attachment")
+main.title = "3-ways interaction: \nCondition, rational thinking, avoidance attachment") ### MK: Same as above
 
 ```
 
@@ -204,11 +206,7 @@ Plot1data<-na.omit(Plot1data)
 
 Plot1data$Mom_avoidance <- factor(Plot1data$Mom_avoidance,
 levels = c("[0,2.72]", "(2.72,5]"),
-labels = c("Less than 2.72", "More than 2.72"))
-
-
-
-
+labels = c("Below the Mean Level", "Above the Mean Level")) ### MK: This could be easier to follow, but just feel free to ignore:)
 ```
 
 
@@ -224,7 +222,7 @@ plot1<-ggplot(Plot1data, aes(x  = NFC, y = In_End, color = Condition))+
 
 
 ```{r}
-plot1
+plot1 
 ```
 
 The plot (method = "lm" for geom_smooth) indicates a seemingly significant relationship between condition and rational thinking at the level of avoidance less than 2.72. What if we don't force linear modeling?
@@ -273,13 +271,28 @@ un_model7Mavo
 
 
 ```{r}
+# un_model7Mavo %>%           MK: Didnt run this code, but it should work.
+#   mutate(
+#     term = recode(term,
+#                   `(Intercept)` = "Intercept",
+#                   `Condition1` = "Condition",
+#                   `NFC` = "Need for Cognition",
+#                   `Mom_avoidance` = "Avoidance towards a mother figure",
+#                   `Condition1:Mom_avoidance` = "Condition X Avoidance towards a mother figure",
+#                   `NFC:Mom_avoidance` = "Need for Cognition X Avoidance towards a mother figure",
+#                   `Condition1:NFC:Mom_avoidance` = "Condition X Need for Cognition X Avoidance towards a mother figure"
+#                   )
+#   )
+
 ggplot(un_model7Mavo, aes(term, estimate))+
   geom_hline(yintercept = 0,
              color = "cornflowerblue",
              linetype = 2)+
   geom_errorbar(aes(ymin = conf.low, ymax = conf.high))+
   geom_point()+
-  coord_flip()
+  coord_flip() +
+  theme_minimal() + 
+  labs(title = "Means and 95% CIs") # just a made-up title
 ```
 
 According to the uncertainty plot, the stadard errors of the three-way interaction is close to zero, indicating small effect sizes. The main effect of condition is the highest with a quite wide range of standard errors. 
