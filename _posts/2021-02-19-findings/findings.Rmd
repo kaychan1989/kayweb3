@@ -271,13 +271,28 @@ un_model7Mavo
 
 
 ```{r}
+# un_model7Mavo %>%           MK: Didnt run this code, but it should work.
+#   mutate(
+#     term = recode(term,
+#                   `(Intercept)` = "Intercept",
+#                   `Condition1` = "Condition",
+#                   `NFC` = "Need for Cognition",
+#                   `Mom_avoidance` = "Avoidance towards a mother figure",
+#                   `Condition1:Mom_avoidance` = "Condition X Avoidance towards a mother figure",
+#                   `NFC:Mom_avoidance` = "Need for Cognition X Avoidance towards a mother figure",
+#                   `Condition1:NFC:Mom_avoidance` = "Condition X Need for Cognition X Avoidance towards a mother figure"
+#                   )
+#   )
+
 ggplot(un_model7Mavo, aes(term, estimate))+
   geom_hline(yintercept = 0,
              color = "cornflowerblue",
              linetype = 2)+
   geom_errorbar(aes(ymin = conf.low, ymax = conf.high))+
   geom_point()+
-  coord_flip()
+  coord_flip() +
+  theme_minimal() + 
+  labs(title = "Means and 95% CIs") # just a made-up title
 ```
 
 According to the uncertainty plot, the stadard errors of the three-way interaction is close to zero, indicating small effect sizes. The main effect of condition is the highest with a quite wide range of standard errors. 
