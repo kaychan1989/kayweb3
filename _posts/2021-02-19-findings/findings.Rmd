@@ -146,12 +146,14 @@ Plot1data$Condition<-as.numeric(Plot1data$Condition)
 model7MavoJN<-lm(In_End~Condition*NFC*Mom_avoidance, Plot1data)
 
 probe_interaction(model7MavoJN, pred = "Condition", modx = "NFC", mod2 = "Mom_avoidance", alpha = .1,
-                  mod2.labels = c("Mean of avoidance - SD", "Mean of avoidance", "Mean of avoidance + 1 SD"),
+                  mod2.labels = c("Mean of avoidance \n- 1 SD", ### MK: Just moved the SD parts one line below so it fits the screen.
+                                  "Mean of avoidance\n", 
+                                  "Mean of avoidance \n+ 1 SD"), 
   
                   
-y.label = "Leaving intention", 
+y.label = "Leaving intention",
 x.label = "Condition",
-main.title = "3-ways interaction:condition, rational thinking, avoidance attachment")
+main.title = "3-ways interaction: \nCondition, rational thinking, avoidance attachment") ### MK: Same as above
 
 ```
 
