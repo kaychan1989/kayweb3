@@ -206,11 +206,7 @@ Plot1data<-na.omit(Plot1data)
 
 Plot1data$Mom_avoidance <- factor(Plot1data$Mom_avoidance,
 levels = c("[0,2.72]", "(2.72,5]"),
-labels = c("Less than 2.72", "More than 2.72"))
-
-
-
-
+labels = c("Below the Mean Level", "Above the Mean Level")) ### MK: This could be easier to follow, but just feel free to ignore:)
 ```
 
 
@@ -226,7 +222,7 @@ plot1<-ggplot(Plot1data, aes(x  = NFC, y = In_End, color = Condition))+
 
 
 ```{r}
-plot1
+plot1 
 ```
 
 The plot (method = "lm" for geom_smooth) indicates a seemingly significant relationship between condition and rational thinking at the level of avoidance less than 2.72. What if we don't force linear modeling?
