@@ -8,6 +8,8 @@ date: 02-19-2021
 output:
   distill::distill_article:
     self_contained: false
+editor_options: 
+  chunk_output_type: console
 ---
 
 
@@ -25,6 +27,7 @@ library(dplyr)
 library(stargazer)
 library(interactions)
 library(expss)
+library(sandwich) # ANISHA added
 ```
 
 
